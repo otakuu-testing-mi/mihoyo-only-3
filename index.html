@@ -36,8 +36,16 @@
             position: relative;
         }
         
-        /* 標題加上優雅的陰影 */
-        h1 { font-family: 'Playfair Display', serif; color: #fff; font-size: 3rem; margin: 0; text-shadow: 2px 2px 4px rgba(62, 39, 35, 0.8); letter-spacing: 2px; }
+        /* 標題換成 Faculty Glyphic，並加上優雅的陰影 */
+        h1 { 
+            font-family: 'Faculty Glyphic', serif; 
+            color: #fff; 
+            font-size: 3rem; 
+            margin: 0; 
+            text-shadow: 2px 2px 4px rgba(62, 39, 35, 0.8); 
+            letter-spacing: 2px; 
+        }
+        
         .subtitle { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-style: italic; color: #fff; margin-top: 10px; text-shadow: 1px 1px 3px rgba(62, 39, 35, 0.8); }
 
         .container { max-width: 800px; width: 90%; margin: 50px 0; }
@@ -64,7 +72,15 @@
             transform: translateX(-50%);
         }
 
-        .promo-title { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--vintage-gold); margin-bottom: 15px; margin-top: 15px;}
+        /* 這裡加上了 font-weight: bold; 讓字體變粗 */
+        .promo-title { 
+            font-family: 'Playfair Display', serif; 
+            font-size: 2rem; 
+            color: var(--vintage-gold); 
+            margin-bottom: 15px; 
+            margin-top: 15px;
+            font-weight: bold; 
+        }
 
         /* 一般票務卡片 */
         .platform-card {
@@ -192,7 +208,8 @@
 
     <script>
         const SITE_CONFIG = {
-            backgroundImage: "https://imgur.com/vp3O2HZ.jpg", 
+            // 修正了背景圖的網址 (加上了 i. 和 .jpg)
+            backgroundImage: "https://i.imgur.com/vp3O2HZ.jpg", 
             jpGuestLink: "guest.html",                                  
             googleFormLink: "https://forms.gle/iAWuNdJoMe35A8Ko9",        
             zaikoLink: "https://mihoyoonly3.zaiko.io/e/mihoyoonly3",      
