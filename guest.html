@@ -131,6 +131,47 @@
         .ticket-card.vip .card-btn:hover { background-color: #9a7009; border-color: #9a7009; }
 
         .terms { text-align: center; font-size: 0.85rem; color: var(--text-muted); margin-top: 50px; padding-top: 30px; border-top: 1px solid var(--border-color); width: 80%; margin-left: auto; margin-right: auto;}
+         .guest-layout {
+            display: flex;
+            flex-direction: column; / Stacks on mobile /
+            gap: 40px;
+        }
+
+        .guest-image {
+            width: 100%;
+        }
+
+        .guest-image img {
+            width: 100%;
+            max-width: 400px;
+            height: auto;
+            border-radius: 6px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            border: 3px solid #fff; / Adds a nice polaroid/photo border effect /
+            outline: 1px solid var(--vintage-gold); / Outer gold line /
+            display: block;
+            margin: 0 auto;
+        }
+
+        / Desktop Layout Override /
+        @media (min-width: 900px) {
+            .guest-layout {
+                flex-direction: row; / Side-by-side on PC /
+                align-items: flex-start;
+            }
+
+            .guest-image {
+                flex: 0 0 35%; / Image takes 35% of the width /
+                position: sticky;
+                top: 30px; / Keeps the image pinned while scrolling through tickets /
+            }
+
+            .ticket-grid {
+                flex: 1; / Tickets take the remaining 65% /
+                / Forces exactly 2 cards per row! */
+                grid-template-columns: repeat(2, 1fr); 
+            }
+        }
     </style>
 </head>
 <body>
