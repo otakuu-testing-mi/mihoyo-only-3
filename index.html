@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mihoyo Only 3 | Official Ticketing Hub</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Noto+Sans+HK:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-gold: #d4af37;
+            --dark-bg: #0f0f0f;
+            --card-bg: #1a1a1a;
+            --text-light: #ffffff;
+            --text-muted: #b0b0b0;
+            --accent-blue: #3a86ff;
+        }
+
+        body {
+            margin: 0; padding: 0;
+            font-family: 'Noto Sans HK', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            display: flex; flex-direction: column; align-items: center;
+        }
+
+        .header {
+            width: 100%; padding: 60px 20px; text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(15,15,15,1)), url('https://images.unsplash.com/photo-1614850523296-d8c1af93d400?q=80&w=2070') center/cover;
+            border-bottom: 2px solid var(--primary-gold);
+        }
+
+        h1 { font-family: 'Cinzel', serif; color: var(--primary-gold); font-size: 2.5rem; margin: 0; }
+        .subtitle { font-size: 1.1rem; color: var(--text-muted); margin-top: 10px; }
+
+        .container { max-width: 800px; width: 90%; margin: 40px 0; }
+
+        /* Main Guest Button - Highlighted */
+        .guest-promo {
+            background: linear-gradient(90deg, #1a1a1a, #2c2410);
+            border: 2px solid var(--primary-gold);
+            padding: 25px; border-radius: 15px; text-align: center; margin-bottom: 40px;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+        }
+
+        .promo-title { font-family: 'Cinzel', serif; font-size: 1.5rem; color: var(--primary-gold); margin-bottom: 15px; }
+
+        /* Ticket Platform Cards */
+        .platform-card {
+            background: var(--card-bg);
+            border-radius: 12px; padding: 25px; margin-bottom: 20px;
+            border: 1px solid #333; display: flex; flex-direction: column;
+        }
+
+        .platform-name { font-size: 1.4rem; font-weight: bold; margin-bottom: 10px; display: flex; align-items: center; justify-content: space-between; }
+        .platform-tag { font-size: 0.8rem; padding: 4px 10px; border-radius: 5px; background: #333; color: var(--text-muted); }
+
+        .payment-methods { display: flex; flex-wrap: wrap; gap: 8px; margin: 15px 0; }
+        .method { font-size: 0.75rem; background: #000; padding: 5px 12px; border-radius: 20px; border: 1px solid #444; color: #ddd; }
+        .method.highlight { border-color: var(--primary-gold); color: var(--primary-gold); }
+
+        /* Buttons */
+        .btn {
+            display: block; text-align: center; text-decoration: none; font-weight: bold;
+            padding: 15px; border-radius: 8px; transition: 0.3s; margin-top: 10px;
+        }
+
+        .btn-gold { background: var(--primary-gold); color: #000; }
+        .btn-gold:hover { background: #f0cc66; transform: translateY(-2px); }
+
+        .btn-outline { border: 1px solid #555; color: #fff; }
+        .btn-outline:hover { background: #333; border-color: #777; }
+
+        .lang-box { font-size: 0.9rem; color: var(--text-muted); line-height: 1.4; }
+
+        footer { margin-top: 40px; padding: 20px; font-size: 0.8rem; color: #555; text-align: center; }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <h1>Mihoyo Only 3</h1>
+        <p class="subtitle">Official Ticketing Hub | 售票中心</p>
+    </header>
+
+    <div class="container">
+        
+        <div class="guest-promo">
+            <div class="promo-title">✨ JP SPECIAL GUESTS ✨</div>
+            <p class="lang-box">
+                Tsukune & Honami Fan Meeting & Offline Events<br>
+                日本嘉賓專屬活動、見面會及攝影晚宴門票
+            </p>
+            <a href="tickets.html" class="btn btn-gold">JP Guest Tickets / 日本嘉賓售票處</a>
+        </div>
+
+        <h2 style="text-align: center; margin-bottom: 20px; font-family: 'Cinzel';">Standard Entry Tickets</h2>
+
+        <div class="platform-card">
+            <div class="platform-name">
+                Local Payment / 本地轉帳 
+                <span class="platform-tag">Google Form</span>
+            </div>
+            <div class="lang-box">
+                Best for Hong Kong residents using local mobile transfers.<br>
+                適合香港本地居民，使用手機應用程式轉帳。
+            </div>
+            <div class="payment-methods">
+                <span class="method highlight">FPS / 轉數快</span>
+                <span class="method highlight">PayMe</span>
+                <span class="method highlight">AlipayHK</span>
+                <span class="method">Alipay China / 支付寶大陸</span>
+            </div>
+            <a href="https://forms.gle/iAWuNdJoMe35A8Ko9" target="_blank" class="btn btn-outline">Enter Google Form / 前往Google Form</a>
+        </div>
+
+        <div class="platform-card">
+            <div class="platform-name">
+                International & Card / 信用卡及海外
+                <span class="platform-tag">Zaiko</span>
+            </div>
+            <div class="lang-box">
+                Best for Overseas fans or Credit Card users.<br>
+                適合海外人士或欲使用信用卡付款之觀眾。
+            </div>
+            <div class="payment-methods">
+                <span class="method highlight">Credit / Debit Card</span>
+                <span class="method highlight">VISA / Master / JCB</span>
+                <span class="method">Alipay China / 支付寶大陸</span>
+            </div>
+            <a href="https://mihoyoonly3.zaiko.io/e/mihoyoonly3" target="_blank" class="btn btn-outline">Go to Zaiko / 前往 Zaiko 官網</a>
+        </div>
+
+    </div>
+
+    <footer>
+        <p>© 2026 Mihoyo Only 3 Organization Team</p>
+    </footer>
+
+</body>
+</html>
