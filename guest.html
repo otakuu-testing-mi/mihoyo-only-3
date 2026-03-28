@@ -38,8 +38,19 @@
             border-bottom: 5px double var(--vintage-gold);
         }
 
+        /* --- 新增：讓標題可以點擊回首頁的樣式 --- */
+        .hero-link {
+            text-decoration: none; /* 去除連結底線 */
+            display: inline-block;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        .hero-link:hover {
+            opacity: 0.85; /* 滑鼠移上去時微微變淡 */
+            transform: scale(1.02); /* 微微放大增加互動感 */
+        }
+
         .hero h1 { color: #fff; font-size: 3rem; margin-top: 0; margin-bottom: 10px; letter-spacing: 2px; text-shadow: 2px 2px 4px rgba(62, 39, 35, 0.8);}
-        .hero p { color: #fff; font-family: 'Aboreto', serif; font-style: italic; font-size: 1.2rem; text-shadow: 1px 1px 3px rgba(62, 39, 35, 0.8);}
+        .hero p { color: #fff; font-family: 'Aboreto', serif; font-style: italic; font-size: 1.2rem; text-shadow: 1px 1px 3px rgba(62, 39, 35, 0.8); margin: 0;}
 
         .container { max-width: 1100px; margin: 50px auto; padding: 0 20px; }
 
@@ -56,10 +67,9 @@
             padding-bottom: 15px;
         }
 
-        /* --- NEW LAYOUT CSS STARTS HERE --- */
         .guest-layout {
             display: flex;
-            flex-direction: column; /* Stacks image on top of tickets on mobile */
+            flex-direction: column; 
             gap: 40px;
         }
 
@@ -86,25 +96,23 @@
             width: 100%;
         }
 
-        /* Desktop Layout Override */
         @media (min-width: 900px) {
             .guest-layout {
-                flex-direction: row; /* Puts image and tickets side-by-side */
+                flex-direction: row; 
                 align-items: flex-start;
             }
             
             .guest-image {
-                flex: 0 0 35%; /* Image takes up 35% of the space */
+                flex: 0 0 35%; 
                 position: sticky;
-                top: 30px; /* Keeps the image pinned while scrolling down */
+                top: 30px; 
             }
 
             .ticket-grid {
-                flex: 1; /* Tickets take up the remaining 65% */
-                grid-template-columns: repeat(2, 1fr); /* Forces exactly 2 tickets per row */
+                flex: 1; 
+                grid-template-columns: repeat(2, 1fr); 
             }
         }
-        /* --- NEW LAYOUT CSS ENDS HERE --- */
 
         .ticket-card {
             background: var(--card-bg);
@@ -148,7 +156,7 @@
 
         .card-btn {
             display: inline-block;
-            align-self: center; /* Fixes the stretching button issue */
+            align-self: center; 
             background-color: transparent;
             color: var(--text-dark);
             text-decoration: none;
@@ -173,8 +181,10 @@
 <body>
 
     <header class="hero">
-        <h1>米哈遊 Mihoyo Only 3</h1>
-        <p>JP Guests 專屬售票系統<br>Guest Fan Meeting Invitations</p>
+        <a href="index.html" class="hero-link">
+            <h1>米哈遊 Mihoyo Only 3</h1>
+            <p>JP Guests 專屬售票系統<br>Guest Fan Meeting Invitations</p>
+        </a>
     </header>
 
     <div class="container">
@@ -196,6 +206,7 @@
                         </div>
                         <a href="https://docs.google.com/forms/d/e/1FAIpQLSe6Asgifp6y5M2ZjnRdtTiVu8387iUatAam5wwkgO-lEm4yzw/viewform?usp=pp_url&entry.740472945=%5BHKD+$1280%5D+VIP+ALL-ACCESS+(%E5%8C%85%E5%90%AB+Day+1+%2B+Day+2+%E6%94%9D%E5%BD%B1%E6%9C%83+%2B+%E6%99%9A%E5%AE%B4)" target="_blank" class="card-btn">Request VIP</a>
                     </div>
+
                     <div class="ticket-card">
                         <div>
                             <h3>米哈遊 Only 3 Meeting</h3>
