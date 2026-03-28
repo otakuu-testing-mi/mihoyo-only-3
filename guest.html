@@ -35,10 +35,14 @@
 
         .hero {
             background: linear-gradient(rgba(45, 30, 20, 0.6), rgba(45, 30, 20, 0.7)), url('https://images.unsplash.com/photo-1540317580384-e5d43867caa6?auto=format&fit=crop&q=80&w=2000') center/cover;
-            padding: 100px 20px 80px 20px;
+            /* Changed padding from 100px/80px to 40px top and bottom */
+            padding: 40px 20px; 
             text-align: center;
             border-bottom: 5px double var(--vintage-gold);
         }
+
+        /* Added margin-top: 0; to remove the invisible extra space above the title */
+        .hero h1 { color: #fff; font-size: 3rem; margin-top: 0; margin-bottom: 10px; letter-spacing: 2px; text-shadow: 2px 2px 4px rgba(62, 39, 35, 0.8);}
 
         .hero h1 { color: #fff; font-size: 3rem; margin-bottom: 10px; letter-spacing: 2px; text-shadow: 2px 2px 4px rgba(62, 39, 35, 0.8);}
         .hero p { color: #fff; font-family: 'Aboreto', serif; font-style: italic; font-size: 1.2rem; text-shadow: 1px 1px 3px rgba(62, 39, 35, 0.8);}
