@@ -25,11 +25,10 @@
 
         .header {
             width: 100%; 
-            padding: 80px 20px; /* 移除了上方的橫幅後，調整了上下間距讓標題置中對齊 */
+            padding: 80px 20px; 
             text-align: center;
             border-bottom: 2px solid var(--primary-gold);
             box-sizing: border-box;
-            /* 背景圖現在由底部的 JavaScript 自動載入 */
             background-position: center;
             background-size: cover;
         }
@@ -75,6 +74,14 @@
         .lang-box { font-size: 0.9rem; color: var(--text-muted); line-height: 1.4; }
 
         footer { margin-top: 40px; padding: 20px; font-size: 0.8rem; color: #555; text-align: center; }
+
+        /* 新增的提示文字樣式 */
+        .extra-notice {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
     </style>
 </head>
 <body>
@@ -87,20 +94,20 @@
     <div class="container">
         
         <div class="guest-promo">
-            <div class="promo-title">✨日本嘉賓專屬活動  Japan Guests✨</div>
+            <div class="promo-title">✨ JP Special Guests ✨</div>
             <p class="lang-box">
                 月海つくね & 穂波あみ Fan Meeting & 月海つくね Offline Event<br>
                 日本嘉賓專屬活動、見面會及攝影會門票
             </p>
-            <a id="link-jp-guest" href="#" class="btn btn-gold">日本嘉賓售票處 / JP Guest Tickets</a>
+            <a id="link-jp-guest" href="#" class="btn btn-gold">JP Guest Tickets / 日本嘉賓售票處</a>
         </div>
 
-        <div id="dynamic-extra-text" class="米哈遊 Only 3 入場門票"></div>
-        <h2 style="text-align: center; margin-bottom: 20px; font-family: 'Faculty Glyphic';">米哈遊 Only 3 入場門票 Standard Entry Tickets</h2>
+        <div id="dynamic-extra-text" class="extra-notice"></div>
+        <h2 style="text-align: center; margin-bottom: 20px; font-family: 'Faculty Glyphic';">Standard Entry Tickets</h2>
 
         <div class="platform-card">
             <div class="platform-name">
-                本地轉帳 / Local Payment
+                Local Payment / 本地轉帳 
                 <span class="platform-tag">Google Form</span>
             </div>
             <div class="lang-box">
@@ -143,12 +150,15 @@
         const SITE_CONFIG = {
             
             // 🖼️ 1. 圖片設定
-            backgroundImage: "https://imgur.com/vp3O2HZ.jpg", // 整個標題區塊的背景底圖
+            backgroundImage: "https://i.imgur.com/mY1GX2D.jpg", // 整個標題區塊的背景底圖
 
             // 🔗 2. 連結設定
             jpGuestLink: "tickets.html",                                  // 日本嘉賓按鈕連結
             googleFormLink: "https://forms.gle/iAWuNdJoMe35A8Ko9",        // Google Form 本地轉帳連結
-            zaikoLink: "https://mihoyoonly3.zaiko.io/e/mihoyoonly3"       // Zaiko 海外購票連結
+            zaikoLink: "https://mihoyoonly3.zaiko.io/e/mihoyoonly3",      // Zaiko 海外購票連結
+
+            // 📝 3. 文字設定
+            noticeText: "米哈遊 Only 3 入場門票" // 顯示在 Standard Entry Tickets 上方的文字
 
         };
 
@@ -157,6 +167,14 @@
         document.getElementById('link-jp-guest').href = SITE_CONFIG.jpGuestLink;
         document.getElementById('link-google-form').href = SITE_CONFIG.googleFormLink;
         document.getElementById('link-zaiko').href = SITE_CONFIG.zaikoLink;
+        
+        // 處理新增的文字
+        const extraTextElement = document.getElementById('dynamic-extra-text');
+        if(SITE_CONFIG.noticeText.trim() !== "") {
+            extraTextElement.innerText = SITE_CONFIG.noticeText;
+        } else {
+            extraTextElement.style.display = 'none'; // 如果您把文字清空，這行就會自動隱藏
+        }
     </script>
 
 </body>
