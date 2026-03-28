@@ -54,7 +54,8 @@
         }
 
         .platform-name { font-size: 1.4rem; font-weight: bold; margin-bottom: 10px; display: flex; align-items: center; justify-content: space-between; }
-        .platform-tag { font-size: 0.8rem; padding: 4px 10px; border-radius: 5px; background: #333; color: var(--text-muted); }
+        
+        /* 隱藏/移除原本的 platform-tag，確保代碼乾淨 */
 
         .payment-methods { display: flex; flex-wrap: wrap; gap: 8px; margin: 15px 0; }
         .method { font-size: 0.75rem; background: #000; padding: 5px 12px; border-radius: 20px; border: 1px solid #444; color: #ddd; }
@@ -75,15 +76,15 @@
 
         footer { margin-top: 40px; padding: 20px; font-size: 0.8rem; color: #555; text-align: center; }
 
-        /* 👑 修改後的提示文字樣式：變得超大、顯眼 */
+        /* 👑 修改後的提示文字樣式：縮小底部間距 */
         .extra-notice {
             text-align: center;
-            color: var(--primary-gold); /* 換成金色 */
-            font-size: 2.2rem; /* 字體放大，比下方的 h2 還要大 */
+            color: var(--primary-gold); 
+            font-size: 2.2rem; 
             font-weight: bold;
-            font-family: 'Faculty Glyphic', serif; /* 套用英文特效字體 */
-            margin-bottom: 30px;
-            text-shadow: 0 0 15px rgba(212, 175, 55, 0.4); /* 加上金色微光 */
+            font-family: 'Noto Sans HK', sans-serif; /* 因為是中文，換回中文字體才不會跑版 */
+            margin-bottom: 0px; /* 將底部距離縮減到 0 */
+            text-shadow: 0 0 15px rgba(212, 175, 55, 0.4); 
             line-height: 1.3;
         }
     </style>
@@ -107,12 +108,11 @@
         </div>
 
         <div id="dynamic-extra-text" class="extra-notice"></div>
-        <h2 style="text-align: center; margin-bottom: 20px; font-family: 'Faculty Glyphic';">Standard Entry Tickets</h2>
+        <h2 style="text-align: center; margin-top: 5px; margin-bottom: 20px; font-family: 'Faculty Glyphic';">Standard Entry Tickets</h2>
 
         <div class="platform-card">
             <div class="platform-name">
                 Local Payment / 本地轉帳 
-                <span class="platform-tag">Google Form</span>
             </div>
             <div class="lang-box">
                 Best for Hong Kong residents using local mobile transfers.<br>
@@ -130,7 +130,6 @@
         <div class="platform-card">
             <div class="platform-name">
                 International & Card / 信用卡及海外
-                <span class="platform-tag">Zaiko</span>
             </div>
             <div class="lang-box">
                 Best for Overseas fans or Credit Card users.<br>
@@ -154,15 +153,15 @@
         const SITE_CONFIG = {
             
             // 🖼️ 1. 圖片設定
-            backgroundImage: "https://imgur.com/vp3O2HZ.jpg", // 整個標題區塊的背景底圖
+            backgroundImage: "https://i.imgur.com/mY1GX2D.jpg", 
 
             // 🔗 2. 連結設定
-            jpGuestLink: "tickets.html",                                  // 日本嘉賓按鈕連結
-            googleFormLink: "https://forms.gle/iAWuNdJoMe35A8Ko9",        // Google Form 本地轉帳連結
-            zaikoLink: "https://mihoyoonly3.zaiko.io/e/mihoyoonly3",      // Zaiko 海外購票連結
+            jpGuestLink: "tickets.html",                                  
+            googleFormLink: "https://forms.gle/iAWuNdJoMe35A8Ko9",        
+            zaikoLink: "https://mihoyoonly3.zaiko.io/e/mihoyoonly3",      
 
-            // 📝 3. 文字設定
-            noticeText: "米哈遊 Only 3 入場門票" // 這裡的文字現在會變成超大金字！可以自由替換
+            // 📝 3. 文字設定 (已經幫你改成截圖上的文字了)
+            noticeText: "米哈遊 Only 3 入場門票" 
 
         };
 
@@ -172,9 +171,7 @@
         document.getElementById('link-google-form').href = SITE_CONFIG.googleFormLink;
         document.getElementById('link-zaiko').href = SITE_CONFIG.zaikoLink;
         
-        // 處理新增的大字體文字
         const extraTextElement = document.getElementById('dynamic-extra-text');
-        // 支援使用 <br> 換行，所以這裡用 innerHTML
         if(SITE_CONFIG.noticeText.trim() !== "") {
             extraTextElement.innerHTML = SITE_CONFIG.noticeText;
         } else {
