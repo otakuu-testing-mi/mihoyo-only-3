@@ -18,7 +18,7 @@
 
         body {
             margin: 0; padding: 0;
-            font-family: 'Noto Serif JP', serif;
+            font-family: 'Noto Serif HK', serif;
             background-color: var(--paper-bg);
             background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');
             color: var(--text-dark);
@@ -26,7 +26,7 @@
         }
 
         h1, h2, h3 { 
-            font-family: 'Faculty Glyphic', 'Noto Serif JP', serif; 
+            font-family: 'Faculty Glyphic', 'Noto Serif HK', serif; 
             text-align: center; 
             color: var(--text-dark);
         }
@@ -38,15 +38,14 @@
             border-bottom: 5px double var(--vintage-gold);
         }
 
-        /* --- 新增：讓標題可以點擊回首頁的樣式 --- */
         .hero-link {
-            text-decoration: none; /* 去除連結底線 */
+            text-decoration: none; 
             display: inline-block;
             transition: opacity 0.3s ease, transform 0.3s ease;
         }
         .hero-link:hover {
-            opacity: 0.85; /* 滑鼠移上去時微微變淡 */
-            transform: scale(1.02); /* 微微放大增加互動感 */
+            opacity: 0.85; 
+            transform: scale(1.02); 
         }
 
         .hero h1 { color: #fff; font-size: 3rem; margin-top: 0; margin-bottom: 10px; letter-spacing: 2px; text-shadow: 2px 2px 4px rgba(62, 39, 35, 0.8);}
@@ -59,12 +58,15 @@
             background: transparent;
         }
 
+        
         .guest-section h2 { 
             color: var(--vintage-gold); 
             font-size: 2.2rem; 
             margin-bottom: 35px; 
             border-bottom: 1px solid var(--border-color);
             padding-bottom: 15px;
+            font-family: 'Noto Sans JP', sans-serif !important; 
+            font-weight: 700 !important;
         }
 
         .guest-layout {
@@ -138,7 +140,13 @@
 
         .ticket-card:hover { transform: translateY(-5px); border-color: var(--vintage-gold); box-shadow: 0 10px 25px rgba(184, 134, 11, 0.1); }
 
-        .ticket-card h3 { margin-top: 0; font-size: 1.4rem; }
+        
+        .ticket-card h3 { 
+            margin-top: 0; 
+            font-size: 1.4rem; 
+            font-family: 'Noto Sans JP', sans-serif !important;
+            font-weight: 700 !important;
+        }
 
         .ticket-card.vip {
             background: linear-gradient(135deg, #fffcf5, #f5ebd9);
