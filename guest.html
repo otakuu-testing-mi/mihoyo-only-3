@@ -25,30 +25,19 @@
             box-sizing: border-box;
         }
 
-        /* 👑 修正：把底色交給最底層的 html 標籤 */
-        html {
-            background-color: var(--paper-bg);
-        }
-
         body {
             margin: 0; 
             padding: 0;
             font-family: 'Noto Serif HK', serif;
-            /* body 不設定底色，變成透明的，讓底下的 html 顏色透上來 */
+            background-color: var(--paper-bg);
+            /* 👑 終極解法：單純將圖片疊加 3 次，不加任何濾鏡，保證紋理明顯且底色明亮！ */
+            background-image: 
+                url('https://www.transparenttextures.com/patterns/cream-paper.png'),
+                url('https://www.transparenttextures.com/patterns/cream-paper.png'),
+                url('https://www.transparenttextures.com/patterns/cream-paper.png');
             color: var(--text-dark);
             line-height: 1.6;
             overflow-wrap: break-word; 
-        }
-
-        /* 👑 修正：紋理層完美夾在 html 底色和 body 內容之間 */
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');
-            filter: contrast(2) opacity(0.8); /* 對比度拉高，讓紙張纖維變超明顯 */
-            z-index: -1;
-            pointer-events: none;
         }
 
         h1, h2, h3 { 
@@ -308,17 +297,16 @@
             border-color: #9a7009; 
         }
 
-        /* 👑 新增：頁尾上方的超強 FOMO 警告字體設定 */
         .footer-fomo {
             text-align: center;
             font-family: 'Noto Sans JP', sans-serif !important;
-            font-weight: 900 !important;
-            color: #B8860B; 
+            font-weight: 900 !important; 
+            color: #b71c1c; 
             font-size: 1.2rem;
             line-height: 1.5;
             margin-bottom: 20px;
             padding: 20px;
-            border: 2px dashed #B8860B;
+            border: 2px dashed #b71c1c;
             border-radius: 8px;
             background-color: #fff8f8;
         }
@@ -353,7 +341,7 @@
                 font-size: 1.6rem;
             }
             .fomo-text {
-                font-size: 1rem;
+                font-size: 0.85rem;
                 padding: 0 10px 15px 10px;
             }
             .ticket-card {
@@ -375,7 +363,7 @@
                 padding: 10px 12px;
             }
             .footer-fomo {
-                font-size: 0.8rem;
+                font-size: 1rem;
                 padding: 15px 10px;
             }
         }
@@ -484,16 +472,8 @@
         </section>
 
         <div class="footer-fomo">
-            本次活動門票（尤其是 VVIP 席位）名額極為有限。<br>
+            ⚠️ 本次活動門票（尤其是 VVIP 席位）名額極為有限。<br>
             所有票種皆售完即止、恕不加開！
         </div>
 
-        <footer class="terms">
-            <p>⚠️ 注意：點擊按鈕後請於表單選擇「購買數量」並上傳付款截圖。<br>
-            All sales are final. No refunds or exchanges.</p>
-            <p>Cordially Invited by © 2026 Mihoyo Only 3</p>
-        </footer>
-    </div>
-
-</body>
-</html>
+        <footer class="terms
