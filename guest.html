@@ -25,24 +25,28 @@
             box-sizing: border-box;
         }
 
+        /* 👑 修正：把底色交給最底層的 html 標籤 */
+        html {
+            background-color: var(--paper-bg);
+        }
+
         body {
             margin: 0; 
             padding: 0;
             font-family: 'Noto Serif HK', serif;
-            background-color: var(--paper-bg);
-            /* 移除了原本的疊加 background-image */
+            /* body 不設定底色，變成透明的，讓底下的 html 顏色透上來 */
             color: var(--text-dark);
             line-height: 1.6;
             overflow-wrap: break-word; 
-            position: relative; /* 配合背景偽元素 */
         }
 
+        /* 👑 修正：紋理層完美夾在 html 底色和 body 內容之間 */
         body::before {
             content: "";
             position: fixed;
             top: 0; left: 0; right: 0; bottom: 0;
             background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');
-            filter: contrast(1.8) opacity(0.7); /* 對比度拉高讓纖維浮現，透明度微調融合 */
+            filter: contrast(2) opacity(0.8); /* 對比度拉高，讓紙張纖維變超明顯 */
             z-index: -1;
             pointer-events: none;
         }
