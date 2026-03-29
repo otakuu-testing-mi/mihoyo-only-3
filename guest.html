@@ -112,7 +112,6 @@
             margin-bottom: 80px;
         }
 
-        /* 👑 恢復了名字下方的分隔線和間距 */
         .guest-section h2 { 
             font-family: 'Noto Sans JP', sans-serif !important; 
             font-weight: 700 !important;
@@ -347,9 +346,11 @@
             .hero p {
                 font-size: 1rem;
             }
+            /* 👑 在手機版強制縮小警告框字體，確保只顯示 2 行 */
             .main-fomo {
-                font-size: 1rem;
-                padding: 15px 10px;
+                font-size: 0.85rem; /* 字體稍微縮小 */
+                padding: 15px 5px; /* 左右留白變小，爭取更多空間 */
+                letter-spacing: -0.2px; /* 稍微拉緊字距 */
             }
             .guest-section h2 {
                 font-size: 1.6rem;
@@ -379,7 +380,7 @@
 
     <header class="hero">
         <a href="index.html" class="hero-link">
-            <h1>Mihoyo Only 3</h1>
+            <h1>米哈遊 Mihoyo Only 3</h1>
             <p>JP Guests 專屬售票系統<br>Guest Fan Meeting Invitations</p>
         </a>
     </header>
@@ -387,7 +388,8 @@
     <div class="container">
         
         <div class="main-fomo">
-            本次活動門票（尤其是 VVIP 席位）名額極為有限。所有票種皆售完即止、恕不加開！
+            ⚠️ 本次活動門票（尤其是 VVIP 席位）名額極為有限。<br>
+            所有票種皆售完即止、恕不加開！
         </div>
         
         <section class="guest-section">
@@ -474,7 +476,7 @@
         <footer class="terms">
             <p>⚠️ 注意：點擊按鈕後請於表單選擇「購買數量」並上傳付款截圖。<br>
             All sales are final. No refunds or exchanges.</p>
-            <p>Cordially Invited by Mihoyo Only 3</p>
+            <p>Cordially Invited by © 2026 Mihoyo Only 3</p>
             <a href="https://www.instagram.com/mihoyo.only/" target="_blank" class="org-ig-btn">Follow @mihoyo.only</a>
         </footer>
     </div>
