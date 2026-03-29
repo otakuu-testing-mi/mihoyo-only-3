@@ -50,7 +50,6 @@
 
         .container { max-width: 800px; width: 90%; margin: 50px 0; }
 
-        /* 嘉賓特別區塊：像一封邀請信 */
         .guest-promo {
             background: linear-gradient(135deg, #fffcf5, #f5ebd9);
             border: 1px solid var(--vintage-gold);
@@ -60,9 +59,14 @@
             margin-bottom: 50px;
             box-shadow: 0 10px 25px rgba(184, 134, 11, 0.15);
             position: relative;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
         
-        /* 裝飾性的小細節 */
+        .guest-promo:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(184, 134, 11, 0.25);
+        }
+        
         .guest-promo::before {
             content: "✦";
             color: var(--vintage-gold);
