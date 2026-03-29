@@ -6,7 +6,6 @@
     <title>Mihoyo Only 3 | Official Ticketing Hub</title>
     <link href="https://fonts.googleapis.com/css2?family=Faculty+Glyphic:wght@400;700&family=Noto+Sans+JP:wght@400;700;900&family=Noto+Serif+HK:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <style>
-        
         :root {
             --vintage-gold: #B8860B; 
             --rose-gold: #c08781;
@@ -16,7 +15,7 @@
             --text-muted: #795548;
             --border-color: #d7ccc8;
             --ig-color: #E1306C; 
-            --zaiko-pink: #e83e8c; /* Zaiko 專屬粉紅 */
+            --zaiko-pink: #e83e8c; 
         }
 
         *, *::before, *::after {
@@ -36,7 +35,6 @@
             overflow-wrap: break-word;
         }
 
-        /* 👑 電腦版隱藏換行符號 */
         .mobile-br {
             display: none;
         }
@@ -259,7 +257,6 @@
             border-color: var(--text-dark); 
         }
 
-        /* 👑 Zaiko 粉紅按鈕 */
         .btn-pink {
             background: #ffffff; 
             color: var(--zaiko-pink); 
@@ -303,9 +300,7 @@
             width: 80%;
         }
 
-        
         @media (max-width: 768px) {
-            /* 👑 手機版啟動換行，並縮小標題字體 */
             .mobile-br {
                 display: block;
             }
@@ -313,7 +308,7 @@
                 padding: 60px 15px 40px 15px;
             }
             .header h1 {
-                font-size: 1.8rem; /* 從原本的 2.2rem 縮小，防止超出版面 */
+                font-size: 1.8rem;
                 letter-spacing: 1px;
             }
             .promo-title {
@@ -364,7 +359,7 @@
         <h2 class="section-title">Mihoyo Only 3 Event Tickets</h2>
 
         <div class="ig-post-wrapper">
-            <a href="#" target="_blank" class="btn-ig-post">🎟️ 查看原活動公告貼文 / View Original Post</a>
+            <a href="#" target="_blank" rel="noopener noreferrer" class="btn-ig-post">🎟️ 查看原活動公告貼文 / View Original Post</a>
         </div>
 
         <div class="platform-card">
@@ -383,7 +378,7 @@
                 <span class="method highlight">香港支付寶 / AlipayHK</span>
                 <span class="method">中国支付宝 / Alipay China</span>
             </div>
-            <a id="link-google-form" href="#" target="_blank" class="btn btn-outline">前往 Google Form 購票 / To Google Form</a>
+            <a id="link-google-form" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-outline">前往 Google Form 購票 / To Google Form</a>
         </div>
 
         <div class="platform-card">
@@ -401,19 +396,19 @@
                 <span class="method highlight">VISA / Master / JCB</span>
                 <span class="method">中国支付宝 / Alipay China</span>
             </div>
-            <a id="link-zaiko" href="#" target="_blank" class="btn btn-pink">前往 Zaiko 購票 / To Zaiko</a>
+            <a id="link-zaiko" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-pink">前往 Zaiko 購票 / To Zaiko</a>
         </div>
 
     </div>
 
     <footer>
-        <p>Cordially Invited by Mihoyo Only 3</p>
-        <a href="https://www.instagram.com/mihoyo.only/" target="_blank" class="org-ig-btn">📷 Follow @mihoyo.only</a>
+        <p>Cordially Invited by © 2026 Mihoyo Only 3 Organisation Team</p>
+        <a href="https://www.instagram.com/mihoyo.only/" target="_blank" rel="noopener noreferrer" class="org-ig-btn">📷 Follow @mihoyo.only</a>
     </footer>
 
     <script>
         const SITE_CONFIG = {
-            backgroundImage: "https://imgur.com/vp3O2HZ.jpg", /* 確保這裡也讀取你的本地背景圖 */
+            backgroundImage: "background.png", /* 修正為直接讀取本地高畫質圖檔 */
             jpGuestLink: "guest.html",                                  
             googleFormLink: "https://forms.gle/iAWuNdJoMe35A8Ko9",        
             zaikoLink: "https://mihoyoonly3.zaiko.io/e/mihoyoonly3",      
