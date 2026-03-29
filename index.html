@@ -15,7 +15,7 @@
             --text-dark: #3e2723; 
             --text-muted: #795548;
             --border-color: #d7ccc8;
-            --ig-color: #E1306C; /* 新增 IG 品牌色變數 */
+            --ig-color: #E1306C; 
         }
 
         *, *::before, *::after {
@@ -27,7 +27,7 @@
             padding: 0;
             font-family: 'Noto Sans JP', sans-serif;
             background-color: var(--paper-bg);
-            background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png'); 
+            background-image: url('https://www.transparenttextures.com/patterns/handmade-paper.png'); 
             color: var(--text-dark);
             display: flex; 
             flex-direction: column; 
@@ -118,7 +118,7 @@
         .section-title {
             text-align: center; 
             margin-top: 5px; 
-            margin-bottom: 30px; 
+            margin-bottom: 15px; /* 稍微縮小間距，讓按鈕可以靠上來 */
             font-family: 'Playfair Display', 'Noto Sans JP', serif; 
             color: var(--text-dark);
             font-size: 1.8rem;
@@ -131,6 +131,33 @@
             height: 2px;
             background: var(--vintage-gold);
             margin: 10px auto 0 auto;
+        }
+
+        /* 👑 新增：獨立的 IG 貼文按鈕外框（置中用） */
+        .ig-post-wrapper {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        /* 👑 修改：IG 貼文按鈕樣式 */
+        .btn-ig-post {
+            display: inline-block;
+            background: transparent;
+            color: var(--ig-color);
+            border: 1px dashed var(--ig-color);
+            font-family: sans-serif;
+            font-weight: bold;
+            font-size: 0.95rem; 
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-ig-post:hover {
+            background: var(--ig-color);
+            color: #fff;
+            border-style: solid;
         }
 
         .platform-card {
@@ -190,14 +217,6 @@
             line-height: 1.6; 
         }
 
-        /* 👑 按鈕群組排版：讓兩個按鈕上下排列，有呼吸空間 */
-        .btn-group {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-top: 15px;
-        }
-
         .btn {
             display: block; 
             text-align: center; 
@@ -206,10 +225,10 @@
             padding: 15px; 
             border-radius: 4px; 
             transition: all 0.3s ease; 
+            margin-top: 15px;
             font-family: 'Playfair Display', 'Noto Sans JP', serif; 
             font-size: 1.1rem; 
             letter-spacing: 1px;
-            margin-top: 0; /* 移除原本的 margin-top，改用 btn-group 控制 */
         }
 
         .btn-gold { 
@@ -235,22 +254,6 @@
             border-color: var(--text-dark); 
         }
 
-        /* 👑 新增：連向 IG 原貼文的空心按鈕樣式 */
-        .btn-ig-post {
-            background: transparent;
-            color: var(--ig-color);
-            border: 1px dashed var(--ig-color);
-            font-size: 0.95rem; /* 字體稍微小一點，不要搶了主按鈕的風頭 */
-            padding: 12px;
-        }
-
-        .btn-ig-post:hover {
-            background: var(--ig-color);
-            color: #fff;
-            border-style: solid;
-        }
-
-        /* 👑 新增：官方 IG 追蹤按鈕樣式 (置於頁尾) */
         .org-ig-btn {
             display: inline-block;
             margin-top: 20px;
@@ -310,6 +313,10 @@
                 font-size: 1rem;
                 padding: 12px;
             }
+            .btn-ig-post {
+                font-size: 0.85rem;
+                padding: 8px 15px;
+            }
         }
     </style>
 </head>
@@ -328,15 +335,15 @@
                 月海つくね & 穂波あみ Fan Meeting & 月海つくね Offline Event<br>
                 日本嘉賓專屬活動、見面會及攝影會門票
             </p>
-            
-            <div class="btn-group">
-                <a id="link-jp-guest" href="#" class="btn btn-gold">查看日本嘉賓門票 / View Guests Tickets</a>
-                <a href="#" target="_blank" class="btn btn-ig-post">🎟️ 查看原活動公告貼文 / View Original Post</a>
-            </div>
+            <a id="link-jp-guest" href="#" class="btn btn-gold">查看日本嘉賓門票 / View Guests Tickets</a>
         </div>
 
         <div id="dynamic-extra-text" class="extra-notice"></div>
         <h2 class="section-title">Mihoyo Only 3 Event Tickets</h2>
+
+        <div class="ig-post-wrapper">
+            <a href="#" target="_blank" class="btn-ig-post">🎟️ 查看原活動公告貼文 / View Original Post</a>
+        </div>
 
         <div class="platform-card">
             <div class="platform-name">
