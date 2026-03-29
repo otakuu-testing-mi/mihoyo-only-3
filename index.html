@@ -6,39 +6,46 @@
     <title>Mihoyo Only 3 | Official Ticketing Hub</title>
     <link href="https://fonts.googleapis.com/css2?family=Faculty+Glyphic:wght@400;700&family=Noto+Sans+JP:wght@400;700;900&family=Noto+Serif+HK:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <style>
+        
         :root {
-            --vintage-gold: #B8860B; /* 古典金 */
+            --vintage-gold: #B8860B; 
             --rose-gold: #c08781;
-            --paper-bg: #fdfbf7; /* 象牙白畫紙色 */
+            --paper-bg: #fdfbf7; 
             --card-bg: #ffffff;
-            --text-dark: #3e2723; /* 深茶色 */
+            --text-dark: #3e2723; 
             --text-muted: #795548;
             --border-color: #d7ccc8;
         }
 
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
         body {
-            margin: 0; padding: 0;
-            font-family: 'Noto Sans JP', serif;
+            margin: 0; 
+            padding: 0;
+            font-family: 'Noto Sans JP', sans-serif;
             background-color: var(--paper-bg);
-            background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png'); /* 增加淡淡的紙張紋理 */
+            background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png'); 
             color: var(--text-dark);
-            display: flex; flex-direction: column; align-items: center;
+            display: flex; 
+            flex-direction: column; 
+            align-items: center;
+            overflow-wrap: break-word;
         }
 
         .header {
             width: 100%; 
             padding: 100px 20px 80px 20px; 
             text-align: center;
-            border-bottom: 5px double var(--vintage-gold); /* 雙線邊框 */
-            box-sizing: border-box;
+            border-bottom: 5px double var(--vintage-gold); 
             background-position: center;
             background-size: cover;
             position: relative;
         }
         
-        
-        h1 { 
-            font-family: 'Faculty Glyphic', serif; 
+        .header h1 { 
+            font-family: 'Faculty Glyphic', 'Noto Sans JP', sans-serif; 
             color: #fff; 
             font-size: 3rem; 
             margin: 0; 
@@ -46,9 +53,20 @@
             letter-spacing: 2px; 
         }
         
-        .subtitle { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-style: italic; color: #fff; margin-top: 10px; text-shadow: 1px 1px 3px rgba(62, 39, 35, 0.8); }
+        .subtitle { 
+            font-family: 'Playfair Display', 'Noto Sans JP', serif; 
+            font-size: 1.2rem; 
+            font-style: italic; 
+            color: #fff; 
+            margin-top: 10px; 
+            text-shadow: 1px 1px 3px rgba(62, 39, 35, 0.8); 
+        }
 
-        .container { max-width: 800px; width: 90%; margin: 50px 0; }
+        .container { 
+            max-width: 800px; 
+            width: 90%; 
+            margin: 50px 0; 
+        }
 
         .guest-promo {
             background: linear-gradient(135deg, #fffcf5, #f5ebd9);
@@ -59,7 +77,7 @@
             margin-bottom: 50px;
             box-shadow: 0 10px 25px rgba(184, 134, 11, 0.15);
             position: relative;
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         
         .guest-promo:hover {
@@ -72,13 +90,13 @@
             color: var(--vintage-gold);
             font-size: 1.5rem;
             position: absolute;
-            top: 10px; left: 50%;
+            top: 10px; 
+            left: 50%;
             transform: translateX(-50%);
         }
 
-        /* 這裡加上了 font-weight: bold; 讓字體變粗 */
         .promo-title { 
-            font-family: 'Playfair Display', serif; 
+            font-family: 'Playfair Display', 'Noto Sans JP', serif; 
             font-size: 2rem; 
             color: var(--vintage-gold); 
             margin-bottom: 15px; 
@@ -86,61 +104,25 @@
             font-weight: bold; 
         }
 
-        /* 一般票務卡片 */
-        .platform-card {
-            background: var(--card-bg);
-            border-radius: 8px; 
-            padding: 30px; 
-            margin-bottom: 25px;
-            border: 1px solid var(--border-color); 
-            display: flex; flex-direction: column;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-            transition: transform 0.3s;
-        }
-        .platform-card:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(184, 134, 11, 0.1); border-color: var(--vintage-gold);}
-
-        .platform-name { font-family: 'Playfair Display', 'Noto Sans JP', serif; font-size: 1.6rem; font-weight: bold; margin-bottom: 10px; color: var(--vintage-gold); border-bottom: 1px dashed var(--border-color); padding-bottom: 10px;}
-        
-        .payment-methods { display: flex; flex-wrap: wrap; gap: 8px; margin: 15px 0; }
-        .method { font-size: 0.8rem; background: #fff; padding: 6px 14px; border-radius: 4px; border: 1px solid var(--border-color); color: var(--text-muted); font-family: sans-serif;}
-        .method.highlight { border-color: var(--vintage-gold); color: var(--vintage-gold); background: #fffcf5;}
-
-        /* 優雅的按鈕 */
-        .btn {
-            display: block; text-align: center; text-decoration: none; font-weight: bold;
-            padding: 15px; border-radius: 4px; transition: 0.3s; margin-top: 15px;
-            font-family: 'Playfair Display', serif; font-size: 1.1rem; letter-spacing: 1px;
-        }
-
-        .btn-gold { background: var(--vintage-gold); color: #fff; border: 1px solid var(--vintage-gold); }
-        .btn-gold:hover { background: #9a7009; }
-
-        .btn-outline { background: transparent; border: 1px solid var(--text-muted); color: var(--text-dark); }
-        .btn-outline:hover { background: var(--text-dark); color: #fff; border-color: var(--text-dark); }
-
-        .lang-box { font-size: 0.95rem; color: var(--text-muted); line-height: 1.6; }
-
-        footer { margin-top: 40px; padding: 30px; font-size: 0.85rem; color: var(--text-muted); text-align: center; border-top: 1px solid var(--border-color); width: 80%;}
-
-        /* 提示文字樣式 */
         .extra-notice {
             text-align: center;
             color: var(--vintage-gold); 
             font-size: 2rem; 
-            font-family: 'Noto Sans JP', serif;
-            font-weight: bold;
+            font-family: 'Noto Sans JP', sans-serif;
+            font-weight: 900;
             margin-bottom: -5px;
-            letter-spacing: normal; /* 取消寬字距*/
+            letter-spacing: normal; 
         }
         
         .section-title {
             text-align: center; 
             margin-top: 5px; 
             margin-bottom: 30px; 
-            font-family: 'Playfair Display', serif;
+            font-family: 'Playfair Display', 'Noto Sans JP', serif; 
             color: var(--text-dark);
             font-size: 1.8rem;
         }
+
         .section-title::after {
             content: "";
             display: block;
@@ -148,6 +130,141 @@
             height: 2px;
             background: var(--vintage-gold);
             margin: 10px auto 0 auto;
+        }
+
+        .platform-card {
+            background: var(--card-bg);
+            border-radius: 8px; 
+            padding: 30px; 
+            margin-bottom: 25px;
+            border: 1px solid var(--border-color); 
+            display: flex; 
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .platform-card:hover { 
+            transform: translateY(-3px); 
+            box-shadow: 0 8px 25px rgba(184, 134, 11, 0.1); 
+            border-color: var(--vintage-gold);
+        }
+
+        .platform-name { 
+            font-family: 'Playfair Display', 'Noto Sans JP', serif; 
+            font-size: 1.6rem; 
+            font-weight: bold; 
+            margin-bottom: 10px; 
+            color: var(--vintage-gold); 
+            border-bottom: 1px dashed var(--border-color); 
+            padding-bottom: 10px;
+        }
+        
+        .payment-methods { 
+            display: flex; 
+            flex-wrap: wrap; 
+            gap: 8px; 
+            margin: 15px 0; 
+        }
+
+        .method { 
+            font-size: 0.8rem; 
+            background: #fff; 
+            padding: 6px 14px; 
+            border-radius: 4px; 
+            border: 1px solid var(--border-color); 
+            color: var(--text-muted); 
+            font-family: 'Noto Sans JP', sans-serif;
+        }
+
+        .method.highlight { 
+            border-color: var(--vintage-gold); 
+            color: var(--vintage-gold); 
+            background: #fffcf5;
+        }
+
+        .lang-box { 
+            font-size: 0.95rem; 
+            color: var(--text-muted); 
+            line-height: 1.6; 
+        }
+
+        
+        .btn {
+            display: block; 
+            text-align: center; 
+            text-decoration: none; 
+            font-weight: bold;
+            padding: 15px; 
+            border-radius: 4px; 
+            transition: all 0.3s ease; 
+            margin-top: 15px;
+            font-family: 'Playfair Display', 'Noto Sans JP', serif; 
+            font-size: 1.1rem; 
+            letter-spacing: 1px;
+        }
+
+        .btn-gold { 
+            background: var(--vintage-gold); 
+            color: #fff; 
+            border: 1px solid var(--vintage-gold); 
+        }
+
+        .btn-gold:hover { 
+            background: #9a7009; 
+            border-color: #9a7009;
+        }
+
+        .btn-outline { 
+            background: transparent; 
+            border: 1px solid var(--text-muted); 
+            color: var(--text-dark); 
+        }
+
+        .btn-outline:hover { 
+            background: var(--text-dark); 
+            color: #fff; 
+            border-color: var(--text-dark); 
+        }
+
+        footer { 
+            margin-top: 40px; 
+            padding: 30px; 
+            font-size: 0.85rem; 
+            color: var(--text-muted); 
+            text-align: center; 
+            border-top: 1px solid var(--border-color); 
+            width: 80%;
+        }
+
+        
+        @media (max-width: 768px) {
+            .header {
+                padding: 60px 15px 40px 15px;
+            }
+            .header h1 {
+                font-size: 2.2rem;
+                letter-spacing: 1px;
+            }
+            .promo-title {
+                font-size: 1.6rem;
+            }
+            .extra-notice {
+                font-size: 1.6rem;
+            }
+            .section-title {
+                font-size: 1.4rem;
+            }
+            .platform-card {
+                padding: 20px 15px;
+            }
+            .platform-name {
+                font-size: 1.3rem;
+            }
+            .btn {
+                font-size: 1rem;
+                padding: 12px;
+            }
         }
     </style>
 </head>
@@ -181,9 +298,6 @@
                 Google Form 售票到5月10日23:59<br>
                 支持以下付款方法。<br>
                 Supports payment methods below.
-
-
-
             </div>
             <div class="payment-methods">
                 <span class="method highlight">轉數快 / FPS</span>
@@ -220,14 +334,12 @@
 
     <script>
         const SITE_CONFIG = {
-            // 修正了背景圖的網址 (加上了 i. 和 .jpg)
             backgroundImage: "https://i.imgur.com/vp3O2HZ.jpg", 
             jpGuestLink: "guest.html",                                  
             googleFormLink: "https://forms.gle/iAWuNdJoMe35A8Ko9",        
             zaikoLink: "https://mihoyoonly3.zaiko.io/e/mihoyoonly3",      
             noticeText: "米哈遊 Only 3 入場門票" 
         };
-
         
         document.getElementById('dynamic-header').style.backgroundImage = `linear-gradient(rgba(45, 30, 20, 0.6), rgba(45, 30, 20, 0.7)), url('${SITE_CONFIG.backgroundImage}')`;
         document.getElementById('link-jp-guest').href = SITE_CONFIG.jpGuestLink;
