@@ -93,7 +93,6 @@
             padding: 0 20px; 
         }
 
-        /* 👑 新增：將原本的底部署名警告框移到最上方 */
         .main-fomo {
             text-align: center;
             font-family: 'Noto Sans JP', sans-serif !important;
@@ -102,7 +101,7 @@
             font-size: 1.2rem;
             line-height: 1.5;
             margin-top: 20px;
-            margin-bottom: 40px; /* 與下方名字保持距離 */
+            margin-bottom: 40px; 
             padding: 20px;
             border: 2px dashed #B8860B;
             border-radius: 8px;
@@ -113,12 +112,15 @@
             margin-bottom: 80px;
         }
 
+        /* 👑 恢復了名字下方的分隔線和間距 */
         .guest-section h2 { 
             font-family: 'Noto Sans JP', sans-serif !important; 
             font-weight: 700 !important;
             color: var(--vintage-gold); 
             font-size: 2.2rem; 
-            margin-bottom: 25px; 
+            margin-bottom: 35px; 
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
         }
 
         .guest-layout {
@@ -385,7 +387,7 @@
     <div class="container">
         
         <div class="main-fomo">
-            ⚠️ 本次活動門票（尤其是 VVIP 席位）名額極為有限。<br>
+            本次活動門票（尤其是 VVIP 席位）名額極為有限。<br>
             所有票種皆售完即止、恕不加開！
         </div>
         
