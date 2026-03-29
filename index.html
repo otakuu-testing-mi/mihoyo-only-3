@@ -15,6 +15,7 @@
             --text-dark: #3e2723; 
             --text-muted: #795548;
             --border-color: #d7ccc8;
+            --ig-color: #E1306C; /* 新增 IG 品牌色變數 */
         }
 
         *, *::before, *::after {
@@ -189,7 +190,14 @@
             line-height: 1.6; 
         }
 
-        
+        /* 👑 按鈕群組排版：讓兩個按鈕上下排列，有呼吸空間 */
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
         .btn {
             display: block; 
             text-align: center; 
@@ -198,10 +206,10 @@
             padding: 15px; 
             border-radius: 4px; 
             transition: all 0.3s ease; 
-            margin-top: 15px;
             font-family: 'Playfair Display', 'Noto Sans JP', serif; 
             font-size: 1.1rem; 
             letter-spacing: 1px;
+            margin-top: 0; /* 移除原本的 margin-top，改用 btn-group 控制 */
         }
 
         .btn-gold { 
@@ -225,6 +233,43 @@
             background: var(--text-dark); 
             color: #fff; 
             border-color: var(--text-dark); 
+        }
+
+        /* 👑 新增：連向 IG 原貼文的空心按鈕樣式 */
+        .btn-ig-post {
+            background: transparent;
+            color: var(--ig-color);
+            border: 1px dashed var(--ig-color);
+            font-size: 0.95rem; /* 字體稍微小一點，不要搶了主按鈕的風頭 */
+            padding: 12px;
+        }
+
+        .btn-ig-post:hover {
+            background: var(--ig-color);
+            color: #fff;
+            border-style: solid;
+        }
+
+        /* 👑 新增：官方 IG 追蹤按鈕樣式 (置於頁尾) */
+        .org-ig-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 8px 24px;
+            background-color: transparent;
+            color: var(--text-muted);
+            border: 1px solid var(--text-muted);
+            border-radius: 20px;
+            text-decoration: none;
+            font-family: sans-serif;
+            font-weight: bold;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+        }
+
+        .org-ig-btn:hover {
+            background-color: var(--ig-color);
+            color: #fff;
+            border-color: var(--ig-color);
         }
 
         footer { 
@@ -283,7 +328,11 @@
                 月海つくね & 穂波あみ Fan Meeting & 月海つくね Offline Event<br>
                 日本嘉賓專屬活動、見面會及攝影會門票
             </p>
-            <a id="link-jp-guest" href="#" class="btn btn-gold">查看日本嘉賓門票 / View Guests Tickets</a>
+            
+            <div class="btn-group">
+                <a id="link-jp-guest" href="#" class="btn btn-gold">查看日本嘉賓門票 / View Guests Tickets</a>
+                <a href="#" target="_blank" class="btn btn-ig-post">🎟️ 查看原活動公告貼文 / View Original Post</a>
+            </div>
         </div>
 
         <div id="dynamic-extra-text" class="extra-notice"></div>
@@ -330,6 +379,7 @@
 
     <footer>
         <p>Cordially Invited by © 2026 Mihoyo Only 3 Organisation Team</p>
+        <a href="https://www.instagram.com/mihoyo.only/" target="_blank" class="org-ig-btn">📷 Follow @mihoyo.only</a>
     </footer>
 
     <script>
