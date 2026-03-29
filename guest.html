@@ -30,10 +30,21 @@
             padding: 0;
             font-family: 'Noto Serif HK', serif;
             background-color: var(--paper-bg);
-            background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png'), url('https://www.transparenttextures.com/patterns/cream-paper.png');
+            /* 移除了原本的疊加 background-image */
             color: var(--text-dark);
             line-height: 1.6;
             overflow-wrap: break-word; 
+            position: relative; /* 配合背景偽元素 */
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');
+            filter: contrast(1.8) opacity(0.7); /* 對比度拉高讓纖維浮現，透明度微調融合 */
+            z-index: -1;
+            pointer-events: none;
         }
 
         h1, h2, h3 { 
