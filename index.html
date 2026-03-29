@@ -139,25 +139,24 @@
             margin-bottom: 30px;
         }
 
-        /* 👑 修改：IG 貼文按鈕樣式 */
         .btn-ig-post {
             display: inline-block;
-            background: transparent;
-            color: var(--ig-color);
-            border: 1px dashed var(--ig-color);
+            background: linear-gradient(135deg, #fffcf5, #f5ebd9); /* 相同的漸層背景 */
+            color: var(--ig-color); /* 保持 IG 專屬顏色 */
+            border: 1px solid var(--vintage-gold); /* 換成優雅的金邊 */
             font-family: sans-serif;
             font-weight: bold;
             font-size: 0.95rem; 
-            padding: 10px 20px;
-            border-radius: 6px;
+            padding: 12px 24px;
+            border-radius: 8px; /* 稍微圓潤一點與大框框呼應 */
             text-decoration: none;
+            box-shadow: 0 5px 15px rgba(184, 134, 11, 0.1); /* 加上淡淡陰影更有質感 */
             transition: all 0.3s ease;
         }
 
         .btn-ig-post:hover {
-            background: var(--ig-color);
-            color: #c08781;
-            border-style: solid;
+            transform: translateY(-3px); /* 滑鼠經過時微微浮起 */
+            box-shadow: 0 8px 20px rgba(184, 134, 11, 0.2);
         }
 
         .platform-card {
