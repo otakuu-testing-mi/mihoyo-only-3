@@ -48,7 +48,6 @@
            2. 頂部橫幅 (Hero Section)
            ========================================== */
         .hero {
-            /* 👑 修改這裡：讀取你上傳到本地的 background 圖片 */
             background: linear-gradient(rgba(45, 30, 20, 0.6), rgba(45, 30, 20, 0.7)), url('background.png') center/cover;
             padding: 40px 20px; 
             text-align: center;
@@ -294,11 +293,26 @@
             border-color: #9a7009; 
         }
 
+        /* 👑 新增：頁尾上方的超強 FOMO 警告字體設定 */
+        .footer-fomo {
+            text-align: center;
+            font-family: 'Noto Sans JP', sans-serif !important;
+            font-weight: 900 !important; /* 極度粗體 */
+            color: #b71c1c; /* 暗紅色警告 */
+            font-size: 1.2rem;
+            line-height: 1.5;
+            margin-bottom: 20px;
+            padding: 20px;
+            border: 2px dashed #b71c1c;
+            border-radius: 8px;
+            background-color: #fff8f8;
+        }
+
         .terms { 
             text-align: center; 
             font-size: 0.85rem; 
             color: var(--text-muted); 
-            margin-top: 50px; 
+            margin-top: 30px; 
             padding-top: 30px; 
             border-top: 1px solid var(--border-color); 
             width: 80%; 
@@ -344,6 +358,10 @@
             .card-btn {
                 font-size: 0.85rem;
                 padding: 10px 12px;
+            }
+            .footer-fomo {
+                font-size: 1rem;
+                padding: 15px 10px;
             }
         }
     </style>
@@ -454,7 +472,7 @@
             ⚠️ 本次活動門票（尤其是 VVIP 席位）名額極為有限。<br>
             所有票種皆售完即止、恕不加開！
         </div>
-        
+
         <footer class="terms">
             <p>⚠️ 注意：點擊按鈕後請於表單選擇「購買數量」並上傳付款截圖。<br>
             All sales are final. No refunds or exchanges.</p>
