@@ -25,19 +25,30 @@
             box-sizing: border-box;
         }
 
+        /* 👑 三明治圖層法：底層與表層 */
         body {
             margin: 0; 
             padding: 0;
             font-family: 'Noto Serif HK', serif;
-            background-color: var(--paper-bg);
-            /* 👑 終極解法：單純將圖片疊加 3 次，不加任何濾鏡，保證紋理明顯且底色明亮！ */
-            background-image: 
-                url('https://www.transparenttextures.com/patterns/cream-paper.png'),
-                url('https://www.transparenttextures.com/patterns/cream-paper.png'),
-                url('https://www.transparenttextures.com/patterns/cream-paper.png');
+            background-color: var(--paper-bg); /* 乾淨的象牙白底色 */
             color: var(--text-dark);
             line-height: 1.6;
             overflow-wrap: break-word; 
+            position: relative; 
+            z-index: 0; /* 【關鍵】把背景色鎖定在最底層，防止蓋住紋理 */
+        }
+
+        /* 👑 三明治圖層法：夾心層（高對比度的明亮紙張紋理） */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');
+            /* 對比度拉高凸顯纖維，亮度拉高洗去灰暗感 */
+            filter: contrast(1.6) brightness(1.15);
+            opacity: 0.8; /* 紋理的強烈程度，可以自由調整 */
+            z-index: -1; /* 夾在底色(0)與文字之間 */
+            pointer-events: none; /* 防止擋住按鈕點擊 */
         }
 
         h1, h2, h3 { 
@@ -301,12 +312,12 @@
             text-align: center;
             font-family: 'Noto Sans JP', sans-serif !important;
             font-weight: 900 !important; 
-            color: #b71c1c; 
+            color: #B8860B; 
             font-size: 1.2rem;
             line-height: 1.5;
             margin-bottom: 20px;
             padding: 20px;
-            border: 2px dashed #b71c1c;
+            border: 2px dashed #B8860B;
             border-radius: 8px;
             background-color: #fff8f8;
         }
@@ -363,7 +374,7 @@
                 padding: 10px 12px;
             }
             .footer-fomo {
-                font-size: 1rem;
+                font-size: 0.8rem;
                 padding: 15px 10px;
             }
         }
@@ -472,8 +483,16 @@
         </section>
 
         <div class="footer-fomo">
-            ⚠️ 本次活動門票（尤其是 VVIP 席位）名額極為有限。<br>
+            本次活動門票（尤其是 VVIP 席位）名額極為有限。<br>
             所有票種皆售完即止、恕不加開！
         </div>
 
-        <footer class="terms
+        <footer class="terms">
+            <p>⚠️ 注意：點擊按鈕後請於表單選擇「購買數量」並上傳付款截圖。<br>
+            All sales are final. No refunds or exchanges.</p>
+            <p>Cordially Invited by © 2026 Mihoyo Only 3</p>
+        </footer>
+    </div>
+
+</body>
+</html>
