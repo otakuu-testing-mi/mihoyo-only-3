@@ -25,30 +25,17 @@
             box-sizing: border-box;
         }
 
-        /* 👑 三明治圖層法：底層與表層 */
         body {
             margin: 0; 
             padding: 0;
             font-family: 'Noto Serif HK', serif;
-            background-color: var(--paper-bg); /* 乾淨的象牙白底色 */
+            background-color: var(--paper-bg);
+            background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');
+            /* 👑 終極解法：直接把紋理圖放大，讓紙張纖維變得超明顯！ */
+            background-size: 500px; 
             color: var(--text-dark);
             line-height: 1.6;
             overflow-wrap: break-word; 
-            position: relative; 
-            z-index: 0; /* 【關鍵】把背景色鎖定在最底層，防止蓋住紋理 */
-        }
-
-        /* 👑 三明治圖層法：夾心層（高對比度的明亮紙張紋理） */
-        body::before {
-            content: "";
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png');
-            /* 對比度拉高凸顯纖維，亮度拉高洗去灰暗感 */
-            filter: contrast(1.6) brightness(1.15);
-            opacity: 0.8; /* 紋理的強烈程度，可以自由調整 */
-            z-index: -1; /* 夾在底色(0)與文字之間 */
-            pointer-events: none; /* 防止擋住按鈕點擊 */
         }
 
         h1, h2, h3 { 
