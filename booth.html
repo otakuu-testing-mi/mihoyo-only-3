@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>米哈遊 Mihoyo Only 3 - 參展社團名單</title>
+    <style>
+        :root {
+            --primary-color: #624e42;
+            --accent-color: #a4161a;
+            --bg-color: #fdfbf7;
+            --card-bg: #ffffff;
+            --text-color: #4a4e69;
+        }
+
+        body {
+            font-family: "PingFang HK", "Microsoft JhengHei", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        header h1 {
+            color: var(--accent-color);
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        /* 卡片樣式 */
+        .booth-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 25px;
+            text-align: center;
+            border: 1px solid #efe4cb;
+        }
+
+        .booth-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(164, 22, 26, 0.1);
+        }
+
+        /* 頭像樣式 */
+        .booth-icon {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            background-color: #eee;
+            margin-bottom: 15px;
+            border: 3px solid var(--card-bg);
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .booth-name {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin: 10px 0;
+        }
+
+        /* 可點擊的社交媒體連結樣式 */
+        .social-link {
+            font-size: 0.9em;
+            color: var(--accent-color);
+            text-decoration: none;
+            margin-bottom: 15px;
+            display: inline-block;
+            font-weight: bold;
+            background: #fff5f5;
+            padding: 6px 15px;
+            border-radius: 20px;
+            transition: 0.3s;
+        }
+
+        .social-link:hover {
+            background: var(--accent-color);
+            color: white;
+        }
+
+        .btn-group {
+            margin-top: auto;
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            padding: 8px 15px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.85em;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-social {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-menu {
+            border: 1px solid var(--accent-color);
+            color: var(--accent-color);
+        }
+
+        .btn:hover {
+            opacity: 0.8;
+            filter: brightness(1.1);
+        }
+
+        /* 搜尋框 */
+        #searchBar {
+            width: 100%;
+            max-width: 400px;
+            padding: 12px 20px;
+            margin-bottom: 40px;
+            border-radius: 25px;
+            border: 1px solid #efe4cb;
+            font-size: 1em;
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>參展組織導覽</h1>
+    <p>Creators & Artists List</p>
+    <input type="text" id="searchBar" placeholder="搜尋社團名稱 / Search Booth Name..." onkeyup="searchBooth()">
+</header>
+
+<div class="container" id="boothContainer">
+    </div>
+
+<script>
+    // 您的數據清單
+    const boothData = [
+        { name: "KERO", social: "_keroooo0", icon: "11yMzBH75n-P1m8BHLYPUTTEOHDv_aW4B", menu: "" },
+        { name: "SANAE", social: "https://instagram.com/sanaemill?r=nametag", icon: "1Rtk8HUBh9sikJ01ZTkLnoi1k0LuoJRoG", menu: "" },
+        { name: "The Little Thingy 小顆子", social: "www.instagram.com/the_little_thingy", icon: "1UPB4z2apbvDeuUMy69np3q2wHfRM0Wpl", menu: "" },
+        { name: "Tomodachi Tshirt", social: "https://www.facebook.com/share/175CUG88S2/?mibextid=wwXIfr", icon: "1mXVzfxitDtzm2MSltlQ6a4J6y4C1Qu7u", menu: "" },
+        { name: "Tsz Impact", social: "https://www.instagram.com/zhuhtnamzo?igsh=b2QxdmNoN2Q0azIx&utm_source=qr", icon: "1BAVODBEBPGxbIGxVHXmmqMtUmyuJbaL6", menu: "" },
+        { name: "yan.maze", social: "https://www.instagram.com/yan.maze?igsh=d203aXprdW1jc3Fo&utm_source=qr", icon: "1W_dIPnWf2oPoRxGBp-ZLMV1ncqZhYjtY", menu: "" },
+        { name: "七葉浮歌", social: "IG：shichiyoufuka", icon: "1kncaPrgdppqMkvg0MzYvUO9fCs6hAut1", menu: "" },
+        { name: "不專定浣熊", social: "https://x.com/nopra2021", icon: "1pK3LjdiMJUXxU7mC6zVoMPcpIvNLua-3", menu: "" },
+        { name: "兩粒糰子", social: "instagram.com/twoballballss", icon: "1No9_PXZm5yjHqmRDs_aoF09XMkM873jO", menu: "" },
+        { name: "凱亞在單眼嗎？", social: "https://jintii.carrd.co/", icon: "1PCSH-u6Knndd4XroDyVeLcfT53cbeAit", menu: "" },
+        { name: "厄了麼", social: "https://www.instagram.com/ld_dillustration", icon: "1BRuLgSsyFuWwdU0Vuyy0TPLejn5t72Aa", menu: "" },
+        { name: "報咗啦邊次唔報", social: "IG : xiaoyao6067", icon: "1VJY3vhUaEBQwTnhOYN_zehpU4YPpqZF6", menu: "" },
+        { name: "安蒂斯插畫萬事屋", social: "https://www.instagram.com/andisi.1020/", icon: "1WHXjq0gWOWt6_h0tVxYDopI3U8X4wGWq", menu: "" },
+        { name: "杳玄琳羽堂", social: "https://www.instagram.com/gyl.303028", icon: "1rjbUVsJ0XHqz1axrAxZS63pKGi9bGwiN", menu: "" },
+        { name: "空想工房．Reverie Studio", social: "https://www.instagram.com/reverie.studio.rs/", icon: "15096HXuGRGymFKtnUfVPk_ohAte-p9Of", menu: "" },
+        { name: "Hana Cosplay", social: "hanacos571", icon: "1LpBRulRpNXXmIVxMwpzrg4jcELwwZl5Y", menu: "" },
+        { name: "浮浮浮圈", social: "https://www.instagram.com/pokimina_d", icon: "1RUYLxZ7EiSuHVYp8yBJJLKf_RFv6Rpo7", menu: "" },
+        { name: "阿棉armian", social: "armianqwq", icon: "1cw-KKoDhnm3A4dnBZjaHLH4iiOZVaeQJ", menu: "" },
+        { name: "叉燒百貨", social: "chaseau_404", icon: "179dRgUf3W69XHzw_PnSJ6an3yLhkfQeA", menu: "" },
+        { name: "小琪AKI COSPLAY", social: "ringoaki", icon: "1dyCvv3gXnbDJ64Qcw1XpsSnncPx4CU9F", menu: "" },
+        { name: "薯仔焗蕃茄", social: "baking_tomato_potato", icon: "1tlJ2Rmc7WjLSNM454lLdWR4Vz2FsibYJ", menu: "" },
+        { name: "至冬牛郎店", social: "umilemontea", icon: "1Q7o9tsHh-FUADY6B4p--_j3fj-SWjLec", menu: "" },
+        { name: "挖靈芝的羊", social: "挖靈芝的羊 IG", icon: "14gdvGYlPVVH1WoTukH99y1AyY_6cghjH", menu: "" },
+        { name: "米飯煲", social: "laihinowo_0928", icon: "1W7E2D6-XpQ6qiGR6XFMJXTYG_SzYuklO", menu: "" },
+        { name: "咕咕咕", social: "ouotriangle", icon: "14_ZaSrGdCf9kr5bUVg8mjsOY-uJPB5f-", menu: "" },
+        { name: "頹喵社", social: "noeru.illu", icon: "1tae028S-8kRvQNtcYJmYQzFBqrGV3nLN", menu: "" },
+        { name: "山口", social: "yamaguchi_comic.design", icon: "14aXq8AGLGx9MURyGZhiAmeXYDnZpovfu", menu: "" },
+        { name: "紙皮盒", social: "hkpoorguy", icon: "1mHh01hBCDvYM6C6xpGGFZPQ8ZMdyw03K", menu: "" },
+        { name: "雪喵 v SnowMeow", social: "flora___li", icon: "1VXBjhUK0jV81BpCdbI5W39dVgfX8bI_N", menu: "" },
+        { name: "Hygge Draw", social: "hyggedraw", icon: "1rzoT6grYjD09e8S7NvaCRTyFrBC6i15R", menu: "" },
+        { name: "翁法羅斯尖叫團", social: "press_meow_nails", icon: "1ib1oJTyFqWBZDGgUfzObnvAtPfeeJDAJ", menu: "" },
+        { name: "大赢家", social: "fuyu_530", icon: "1jdy7F5zXZFnQRt-Jk5iqaDt_kjNUZmg5", menu: "" },
+        { name: "夢子cosplay", social: "yumeko.coser", icon: "1FnG43Y-wmHOFQCKxjJESIpZGdMjO_bfx", menu: "" },
+        { name: "Pic Up Doll", social: "picupdoll", icon: "1iJyjzpThIs_uwN2upXwqSF1XFmGc_hoL", menu: "" },
+        { name: "iuhirussssss", social: "iuhirussssss", icon: "1Yb5FPBSKF27J8RMBo0s0supkmPPM2XRo", menu: "" },
+        { name: "球球小舖", social: "akakyu_fa", icon: "1zJ0P7b7Ewqo6-IdJ_cRNVRRgsLH2UuaF", menu: "" },
+        { name: "AT189City", social: "at189city", icon: "1TYg_QbmPlifhP5T-p2Yih2c7ZroRA-rl", menu: "" },
+        { name: "日和紅茶", social: "hinakoucha13", icon: "1_o5p2LFLvJE4jxlMal_8EJ1X_4XaejfJ", menu: "" },
+        { name: "L", social: "doujin.sailee", icon: "1S1BRVz2DwCzzavcdkA7v5ysq6nhymXcY", menu: "" },
+        { name: "非零君事務所", social: "flk_drawing", icon: "120MeGdI0n3sH5hEe5vTBmAvl4fxZUnEa", menu: "" },
+        { name: "心之回憶棉花農場", social: "heart_of_memories", icon: "1bpJRCntD6dzEg47Lcu179Kk5zcV3csRe", menu: "" },
+        { name: "七休萬事屋", social: "haruna_is_broke", icon: "1p08-Oo5cziqST6vgOaYpKBTwLPhtJh-k", menu: "" },
+        { name: "真理☆永駐", social: "nqztan_draw", icon: "1LCmharm5kUnPxXgscTNdD57KRm2rjn8S", menu: "" },
+        { name: "Stupid Cat and Co.", social: "stupid_cat_and_co", icon: "1wo2GSUa_A3TRNN6qCb-8rPyncAXu9Rbs", menu: "" },
+        { name: "同人造物電飯煲", social: "RiceCooker IG", icon: "1OiJM1gt0qPgIzaz0dy13Kw71g-ESG0hO", menu: "" },
+        { name: "Alchemist's Canvas", social: "alchemist_canvas", icon: "1mts7oxH_aBoP2_Z8ge4FWWKN-O2ocXs4", menu: "" },
+        { name: "單走一個6", social: "danzouyige.66", icon: "1b6GNlUNqNx06544C1BMT-wBR_B6dAcyh", menu: "" },
+        { name: "Gensei", social: "gensai_draws", icon: "1EWEDBPsa9XXhNXpDXrRmQB0v8RcT8AZX", menu: "" },
+        { name: "小保不成課大保", social: "acirfcsans_596", icon: "1mqW6-tKpT9AE9HmjLVrAyhmwSrned_Lx", menu: "" },
+        { name: "GYOYO", social: "gyoyo_art", icon: "1NECUWS9HdfG4aX7mhV44KGny3vbNcY32", menu: "" },
+        { name: "貓尾商店", social: "chm25252_", icon: "1v1o6UGpePXrWiJkZ0DH7wxSEHLhHqiSb", menu: "" },
+        { name: "AquaMorn", social: "su.shika_", icon: "1cwabXhi8SRI9JwdT0xmKlKSBQ1h76PIK", menu: "" },
+        { name: "秋とメル（秋夜小分隊）", social: "akiii.yoruuu", icon: "1B0EhUBot5SR5zg-8LxPnS_qyGesMVuXv", menu: "" },
+        { name: "yaoi重度依賴", social: "0_noiii", icon: "1DnIMsVzFz_d-X_PzSob6Aw7UvQL1oP49", menu: "" },
+        { name: "Z7", social: "Z7 Social", icon: "15KFXHq33xZMa0eoZTCVL1p9rIxbD0Q-z", menu: "" },
+        { name: "月鵝社", social: "idkhowtodraw55", icon: "1MAUjIreQFVR7HXSc_RA1ON5bashiwDF3", menu: "" },
+        { name: "桃子茶屋", social: "hoi_yuuuet", icon: "1S46xnjPSADg13y2w9jQMjZ-s3C8f63vE", menu: "" },
+        { name: "躺在雲上", social: "Cloud_neko.nn", icon: "1qcjDjz0bOUdm0vKFgfNUv8I8mOpvsTan", menu: "" },
+        { name: "《♡小鉛梓x歡愉命圖的女人》", social: "minoru_azusa_0429.cos", icon: "1e2SyHyvRODSJUI_pI9PKglGoaEGHBOll", menu: "" },
+        { name: "咖啡歐蕾", social: "_coffeeole", icon: "1dpR95osDMaUz86i8UAz9J9uZ3Ir3yx4F", menu: "" },
+        { name: "叭布辦館", social: "ba777.bu", icon: "1xmsn_1XnFUwFt3tLVmf2K0qg_-GVdqgA", menu: "" },
+        { name: "使出硬撐的社畜", social: "maoi8_n6", icon: "16rYv7E9hPLxQEjyQBNgnuBxZrMD3h5zU", menu: "" },
+        { name: "破冰船", social: "kebeb_genshin", icon: "1G1bYwFY1JHtXFTS19ppRhRKg96nExIuS", menu: "" },
+        { name: "IRIS_In", social: "seven_holidays_shop", icon: "1CQ_8aD1gmYBMB0y8W4KBdPYCkRdVCfaC", menu: "" },
+        { name: "HANABI 花火", social: "hanabi._03", icon: "1ZP6hSh14YWd1HvLTH_zK_1LNB-Yduege", menu: "" },
+        { name: "蛋撻畫社", social: "KL._40xl", icon: "1ANZSnUMPD18cGU5xXROIj4YDxK4cxklK", menu: "" },
+        { name: "三喬主公3KIU", social: "Made.in.3kiu", icon: "1jV1Lhd3fMDNHN6heNThx8ZOSblSyF_jx", menu: "" },
+        { name: "共鳴串珠休息站", social: "Resonance Beads", icon: "1bVsaTl3S3VcF_na-e9WJZ5eZ4Ox4jMjF", menu: "" },
+        { name: "All or nothing", social: "lygus_romantic99", icon: "1Wwi_V9qGP1Ij1uX314SZoTKD4joeVb0A", menu: "" },
+        { name: "藤堂うさぎ X Achu阿廚 X 萌妃 Meow", social: "0603usagi", icon: "1IdJ4ck-jCgBckBPPSn0IGF_XjpeOuLa3", menu: "" },
+        { name: "calamy fortune", social: "_calamy_0", icon: "1fDHWqdrv8nXtU0lL3V0odHQ4zHKphCjF", menu: "" },
+        { name: "柒號研究所", social: "no.7kenkyusha", icon: "12jGxjly79rfYMNO5r_Lx48sWDjF70kyb", menu: "" },
+        { name: "Matcha Soba", social: "matchasoba_st", icon: "1ZVgDUWjQaenTgBMTh02Cz2hEVxC_nMtT", menu: "" },
+        { name: "崩壞之翼塵塵", social: "yoruiii14", icon: "1nFHrvIvKmq9pfxBO7PWq9qSolE0kz6gg", menu: "" },
+        { name: "Mei咩 × Mo茉", social: "siumei_0107", icon: "1n19vdYWrzRN9erE0nMOylRvJ-nXeuuHS", menu: "" },
+        { name: "MACHI", social: "m._.achi", icon: "17jYT5kUy3_k7ST3n5esw0umhiV0a2qfd", menu: "" },
+        { name: "street culture", social: "streetculture_kiki", icon: "19RcvXrkCFw6zLk4SDwM-5ruZ-23mDtu8", menu: "" },
+        { name: "Fyy♡Cosplay", social: "fyueee.21", icon: "13Z0_FWTMOXdRTwHT1h5KJc_orMcFySbR", menu: "" },
+        { name: "DEER 62", social: "deerchann", icon: "1u0NqdcDGZejpVBVV_yQzcmL09IbRRrFg", menu: "" }
+    ];
+
+    // 智慧連結轉換器：自動判斷是網址還是 IG 帳號
+    function getSmartLink(rawText) {
+        if (!rawText) return "#";
+        let str = rawText.trim();
+        
+        // 如果已經是完整網址，直接返回
+        if (str.startsWith("http")) return str;
+        // 如果有 www 開頭，補上 https
+        if (str.startsWith("www.")) return "https://" + str;
+        // 如果包含網域後綴（如 instagram.com）
+        if (str.includes(".com") || str.includes(".co")) return "https://" + str;
+        
+        // 如果只是純帳號，過濾掉 "IG:", "@" 等字眼，並組裝成 IG 連結
+        str = str.replace(/IG\s*[:：]/i, "").replace(/@/g, "").trim();
+        // 抓取第一個單字（避免帳號後面跟著中文字備註）
+        let handle = str.split(" ")[0]; 
+        
+        return "https://www.instagram.com/" + handle;
+    }
+
+    // 格式化顯示文字：太長的網址會縮排成漂亮按鈕
+    function getDisplayText(rawText) {
+        if (!rawText) return "無";
+        let str = rawText.trim();
+        // 如果是網址，或是文字太長，就統一顯示為「@ 社交平台」
+        if (str.startsWith("http") || str.length > 20) {
+            return "@ 社交平台 (Social Media)";
+        }
+        // 去除多餘的 IG 標籤，顯示乾淨的帳號名稱
+        return "@ " + str.replace(/IG\s*[:：]/i, "").replace(/@/g, "").trim();
+    }
+
+    // 渲染卡片
+    function renderCards(data) {
+        const container = document.getElementById('boothContainer');
+        container.innerHTML = '';
+        
+        data.forEach(booth => {
+            // Google Drive 圖片連結轉換 (uc?export=view&id=ID)
+            const imgUrl = booth.icon ? `https://drive.google.com/uc?export=view&id=${booth.icon}` : 'https://via.placeholder.com/150?text=No+Icon';
+            
+            const card = document.createElement('div');
+            card.className = 'booth-card';
+            card.innerHTML = `
+                <img class="booth-icon" src="${imgUrl}" alt="${booth.name}">
+                <div class="booth-name">${booth.name}</div>
+                
+                <a href="${getSmartLink(booth.social)}" target="_blank" class="social-link">
+                    🔗 ${getDisplayText(booth.social)}
+                </a>
+
+                <div class="btn-group">
+                    <a href="#" class="btn btn-social">社團簡介</a>
+                    ${booth.menu ? `<a href="${booth.menu}" class="btn btn-menu" target="_blank">刊物清單</a>` : ''}
+                </div>
+            `;
+            container.appendChild(card);
+        });
+    }
+
+    // 搜尋功能
+    function searchBooth() {
+        const input = document.getElementById('searchBar').value.toLowerCase();
+        const filteredData = boothData.filter(booth => 
+            booth.name.toLowerCase().includes(input)
+        );
+        renderCards(filteredData);
+    }
+
+    // 初始載入
+    window.onload = () => renderCards(boothData);
+</script>
+
+</body>
+</html>
