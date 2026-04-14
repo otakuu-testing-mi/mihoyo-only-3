@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>米哈遊 Mihoyo Only 3 - 參展社團名單</title>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-color: #624e42;
             --accent-color: #a4161a;
-            --bg-color: #fdfbf7;
-            /* Made card-bg a very light cream for a softer look */
-            --card-bg: #fffefa; 
+            --bg-color: #fcfcfc; /* Much lighter background */
+            --card-bg: #ffffff;
             --text-color: #4a4e69;
         }
 
@@ -24,164 +24,138 @@
 
         header {
             text-align: center;
-            padding: 40px 0;
+            padding: 60px 0;
         }
 
+        /* OBVIOUS CHANGE: Huge Impact-style font for the 'Zone' */
         header h1 {
-            /* Changed font to Impact */
-            font-family: 'Impact', 'Charcoal', sans-serif;
+            font-family: 'Anton', 'Impact', sans-serif;
             color: var(--accent-color);
-            font-size: 3.5em; /* Slightly larger for Impact impact */
-            margin-bottom: 5px;
-            letter-spacing: 1px;
+            font-size: 5rem; /* Massive size for visibility */
+            margin: 0;
+            letter-spacing: 4px;
             text-transform: uppercase;
+            line-height: 0.9;
         }
 
         header p {
-            margin-top: 0;
+            font-size: 1.5rem;
             font-weight: bold;
-            opacity: 0.8;
+            letter-spacing: 2px;
+            margin-top: 10px;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 40px;
         }
 
-        /* 卡片樣式 */
+        /* OBVIOUS CHANGE: 3px heavy border and pop transition */
         .booth-card {
             background: var(--card-bg);
             border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 6px 12px rgba(0,0,0,0.03);
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 20px 15px; /* Reduced side padding */
+            padding: 30px 20px;
             text-align: center;
-            /* Updated to 3px border with accent color */
-            border: 3px solid var(--accent-color);
-            position: relative;
+            border: 3px solid var(--accent-color); /* Heavy 3px border */
         }
 
         .booth-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 30px rgba(164, 22, 26, 0.15);
-            background: #ffffff;
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(164, 22, 26, 0.2);
+            background-color: #fff9f9;
         }
 
-        /* 頭像樣式 - Visual Pop Focus */
+        /* OBVIOUS CHANGE: Photo-centric layout (Photo is huge) */
         .booth-icon {
-            width: 150px; /* Increased size */
-            height: 150px;
+            width: 180px; /* Scaled up significantly */
+            height: 180px;
             border-radius: 50%;
             object-fit: cover;
             background-color: #eee;
-            margin-bottom: 10px;
-            border: 4px solid white;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-            transition: transform 0.3s ease;
+            margin-bottom: 20px;
+            border: 5px solid white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.4s ease;
         }
 
         .booth-card:hover .booth-icon {
-            transform: scale(1.08); /* Photo pops out more on hover */
+            transform: scale(1.15); /* Photo pops out even more */
         }
 
         .booth-name {
-            font-family: 'Impact', sans-serif; /* Applied Impact to booth names too */
-            font-size: 1.3em;
-            letter-spacing: 0.5px;
+            font-family: 'Anton', 'Impact', sans-serif; /* Impact for names */
+            font-size: 1.6rem;
             color: var(--primary-color);
-            margin: 5px 0;
+            margin: 5px 0 15px 0;
+            line-height: 1.2;
         }
 
-        /* Compact social link */
         .social-link {
-            font-size: 0.8em;
+            font-size: 0.85rem;
             color: var(--accent-color);
             text-decoration: none;
-            margin-bottom: 12px;
+            margin-bottom: 20px;
             display: inline-block;
+            font-weight: bold;
             background: #fff0f0;
-            padding: 4px 12px;
-            border-radius: 15px;
-            transition: 0.2s;
-            max-width: 90%;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .social-link:hover {
-            background: var(--accent-color);
-            color: white;
+            padding: 6px 15px;
+            border-radius: 20px;
+            transition: 0.3s;
         }
 
         .btn-group {
             margin-top: auto;
             display: flex;
-            gap: 8px;
+            gap: 10px;
             width: 100%;
-            justify-content: center;
         }
 
         .btn {
-            padding: 6px 12px;
+            flex: 1;
+            padding: 10px;
             border-radius: 12px;
             text-decoration: none;
-            font-size: 0.75em;
+            font-size: 0.8rem;
             font-weight: bold;
+            text-align: center;
             transition: 0.3s;
-            flex: 1;
-            max-width: 100px;
         }
 
-        .btn-social {
-            background-color: var(--primary-color);
-            color: white;
-        }
+        .btn-social { background-color: var(--primary-color); color: white; }
+        .btn-menu { border: 2px solid var(--accent-color); color: var(--accent-color); }
 
-        .btn-menu {
-            border: 2px solid var(--accent-color);
-            color: var(--accent-color);
-            background: transparent;
-        }
-
-        /* 搜尋框 */
         #searchBar {
             width: 90%;
-            max-width: 400px;
-            padding: 12px 25px;
-            margin-bottom: 40px;
-            border-radius: 30px;
+            max-width: 500px;
+            padding: 15px 30px;
+            margin-bottom: 50px;
+            border-radius: 40px;
             border: 3px solid #efe4cb;
-            font-size: 1em;
+            font-size: 1.1rem;
             outline: none;
-            transition: border-color 0.3s;
-        }
-
-        #searchBar:focus {
-            border-color: var(--accent-color);
         }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>CREATORS LIST</h1>
+    <h1>CREATORS ZONE</h1>
     <p>Mihoyo Only 3 參展組織導覽</p>
-    <input type="text" id="searchBar" placeholder="搜尋社團名稱 / Search Booth Name..." onkeyup="searchBooth()">
+    <input type="text" id="searchBar" placeholder="Search Booth Name..." onkeyup="searchBooth()">
 </header>
 
-<div class="container" id="boothContainer">
-    </div>
+<div class="container" id="boothContainer"></div>
 
 <script>
-    // Data remains the same as your original list
     const boothData = [
         { name: "KERO", social: "_keroooo0", icon: "11yMzBH75n-P1m8BHLYPUTTEOHDv_aW4B", menu: "" },
         { name: "SANAE", social: "https://instagram.com/sanaemill?r=nametag", icon: "1Rtk8HUBh9sikJ01ZTkLnoi1k0LuoJRoG", menu: "" },
@@ -259,7 +233,7 @@
         { name: "崩壞之翼塵塵", social: "yoruiii14", icon: "1nFHrvIvKmq9pfxBO7PWq9qSolE0kz6gg", menu: "" },
         { name: "Mei咩 × Mo茉", social: "siumei_0107", icon: "1n19vdYWrzRN9erE0nMOylRvJ-nXeuuHS", menu: "" },
         { name: "MACHI", social: "m._.achi", icon: "17jYT5kUy3_k7ST3n5esw0umhiV0a2qfd", menu: "" },
-        { name: "street culture", social: "streetculture_kiki", icon: "19RcvXrkCFw6zLk4SDwM-5ruZ-23mDtu8", menu: "" },
+        { name: "street culture", social: "streetculture_kiki", icon: "19RcvXrkCFw6zLk4SDwM-5ruZ-23mDtu8", icon: "19RcvXrkCFw6zLk4SDwM-5ruZ-23mDtu8", menu: "" },
         { name: "Fyy♡Cosplay", social: "fyueee.21", icon: "13Z0_FWTMOXdRTwHT1h5KJc_orMcFySbR", menu: "" },
         { name: "DEER 62", social: "deerchann", icon: "1u0NqdcDGZejpVBVV_yQzcmL09IbRRrFg", menu: "" }
     ];
@@ -271,39 +245,30 @@
         if (str.startsWith("www.")) return "https://" + str;
         if (str.includes(".com") || str.includes(".co")) return "https://" + str;
         str = str.replace(/IG\s*[:：]/i, "").replace(/@/g, "").trim();
-        let handle = str.split(" ")[0]; 
-        return "https://www.instagram.com/" + handle;
+        return "https://www.instagram.com/" + str.split(" ")[0];
     }
 
     function getDisplayText(rawText) {
-        if (!rawText) return "無";
+        if (!rawText) return "LINK";
         let str = rawText.trim();
-        if (str.startsWith("http") || str.length > 20) {
-            return "SOCIAL MEDIA";
-        }
+        if (str.startsWith("http") || str.length > 15) return "SOCIAL MEDIA";
         return "@ " + str.replace(/IG\s*[:：]/i, "").replace(/@/g, "").trim();
     }
 
     function renderCards(data) {
         const container = document.getElementById('boothContainer');
         container.innerHTML = '';
-        
         data.forEach(booth => {
-            const imgUrl = booth.icon ? `https://drive.google.com/uc?export=view&id=${booth.icon}` : 'https://via.placeholder.com/150?text=No+Icon';
-            
+            const imgUrl = booth.icon ? `https://drive.google.com/uc?export=view&id=${booth.icon}` : 'https://via.placeholder.com/180';
             const card = document.createElement('div');
             card.className = 'booth-card';
             card.innerHTML = `
                 <img class="booth-icon" src="${imgUrl}" alt="${booth.name}">
                 <div class="booth-name">${booth.name}</div>
-                
-                <a href="${getSmartLink(booth.social)}" target="_blank" class="social-link">
-                    🔗 ${getDisplayText(booth.social)}
-                </a>
-
+                <a href="${getSmartLink(booth.social)}" target="_blank" class="social-link">🔗 ${getDisplayText(booth.social)}</a>
                 <div class="btn-group">
-                    <a href="#" class="btn btn-social">社團簡介</a>
-                    ${booth.menu ? `<a href="${booth.menu}" class="btn btn-menu" target="_blank">刊物清單</a>` : ''}
+                    <a href="#" class="btn btn-social">PROFILE</a>
+                    ${booth.menu ? `<a href="${booth.menu}" class="btn btn-menu" target="_blank">MENU</a>` : ''}
                 </div>
             `;
             container.appendChild(card);
@@ -312,10 +277,7 @@
 
     function searchBooth() {
         const input = document.getElementById('searchBar').value.toLowerCase();
-        const filteredData = boothData.filter(booth => 
-            booth.name.toLowerCase().includes(input)
-        );
-        renderCards(filteredData);
+        renderCards(boothData.filter(b => b.name.toLowerCase().includes(input)));
     }
 
     window.onload = () => renderCards(boothData);
