@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mihoyo Only 3 | Official Ticketing Hub</title>
+    <title>Mihoyo Only 3 | 門票合 Ticketing Hub</title>
     <link href="https://fonts.googleapis.com/css2?family=Faculty+Glyphic:wght@400;700&family=Noto+Sans+JP:wght@400;700;900&family=Noto+Serif+HK:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -16,6 +16,7 @@
             --border-color: #d7ccc8;
             --ig-color: #E1306C; 
             --zaiko-pink: #e83e8c; 
+            --vote-green: #2e7d32; 
         }
 
         *, *::before, *::after {
@@ -33,6 +34,41 @@
             flex-direction: column; 
             align-items: center;
             overflow-wrap: break-word;
+            /* 👑 基礎防護：禁止反白整個網頁的文字和元素 */
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        /* --- 新增：導航列 Navbar --- */
+        .navbar {
+            width: 100%;
+            background-color: var(--card-bg);
+            border-bottom: 2px solid var(--vintage-gold);
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            padding: 15px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(184, 134, 11, 0.1);
+        }
+
+        .navbar a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-family: 'Playfair Display', 'Noto Sans JP', serif;
+            font-weight: bold;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .navbar a:hover {
+            color: var(--vintage-gold);
+            transform: translateY(-2px);
         }
 
         .mobile-br {
@@ -41,7 +77,7 @@
 
         .header {
             width: 100%; 
-            padding: 100px 20px 80px 20px; 
+            padding: 80px 20px 60px 20px; 
             text-align: center;
             border-bottom: 5px double var(--vintage-gold); 
             background-position: center;
@@ -69,9 +105,23 @@
         }
 
         .container { 
-            max-width: 800px; 
+            max-width: 1000px; /* 增加寬度以容納左右雙欄 */
             width: 90%; 
             margin: 50px 0; 
+        }
+
+        /* --- 新增：左右雙欄排版 --- */
+        .tickets-wrapper {
+            display: flex;
+            gap: 40px;
+            align-items: flex-start;
+            margin-bottom: 30px;
+        }
+
+        .ticket-col-left, .ticket-col-right {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
         }
 
         .guest-promo {
@@ -80,10 +130,10 @@
             padding: 35px 25px; 
             border-radius: 8px; 
             text-align: center; 
-            margin-bottom: 50px;
             box-shadow: 0 10px 25px rgba(184, 134, 11, 0.15);
             position: relative;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%; /* 確保與右邊對齊 */
         }
         
         .guest-promo:hover {
@@ -180,6 +230,10 @@
             box-shadow: 0 8px 25px rgba(184, 134, 11, 0.1); 
             border-color: var(--vintage-gold);
         }
+        
+        .platform-card.vote-card:hover {
+            border-color: var(--vote-green);
+        }
 
         .platform-name { 
             font-family: 'Playfair Display', 'Noto Sans JP', serif; 
@@ -190,7 +244,7 @@
             border-bottom: 1px dashed var(--border-color); 
             padding-bottom: 10px;
         }
-        
+
         .payment-methods { 
             display: flex; 
             flex-wrap: wrap; 
@@ -268,6 +322,18 @@
             color: #ffffff; 
             border-color: var(--zaiko-pink);
         }
+        
+        .btn-green {
+            background: #ffffff; 
+            color: var(--vote-green); 
+            border: 1px solid var(--vote-green); 
+        }
+
+        .btn-green:hover, .btn-green:active {
+            background: var(--vote-green); 
+            color: #ffffff; 
+            border-color: var(--vote-green);
+        }
 
         .org-ig-btn {
             display: inline-block;
@@ -301,6 +367,17 @@
         }
 
         @media (max-width: 768px) {
+            .navbar {
+                gap: 20px;
+                padding: 12px 15px;
+            }
+            .navbar a {
+                font-size: 1rem;
+            }
+            .tickets-wrapper {
+                flex-direction: column; /* 手機版自動變成上下排列 */
+                gap: 20px;
+            }
             .mobile-br {
                 display: block;
             }
@@ -337,7 +414,13 @@
         }
     </style>
 </head>
-<body>
+<body oncontextmenu="return false;" ondragstart="return false;" ondrop="return false;">
+
+    <nav class="navbar">
+        <a href="guest.html">Guest</a>
+        <a href="voting.html">Voting</a>
+        <a href="booth.html">Booth</a>
+    </nav>
 
     <header class="header" id="dynamic-header">
         <h1>米哈遊 <br class="mobile-br">Mihoyo Only 3</h1>
@@ -346,69 +429,103 @@
 
     <div class="container">
         
-        <div class="guest-promo">
-            <div class="promo-title">日本嘉賓見面會<br>Special Guests <br class="mobile-br">Tea Party</div>
-            <p class="lang-box">
-                月海つくね & 穂波あみ Fan Meeting & <br class="mobile-br">月海つくね Offline Event<br>
-                日本嘉賓專屬活動、見面會及攝影會門票
-            </p>
-            <a id="link-jp-guest" href="#" class="btn btn-gold">查看日本嘉賓門票 / <br class="mobile-br">View Guests Tickets</a>
+        <div class="tickets-wrapper">
+            
+            <div class="ticket-col-left">
+                <div class="guest-promo">
+                    <div class="promo-title">日本嘉賓見面會<br>Special Guests <br class="mobile-br">Tea Party</div>
+                    <p class="lang-box">
+                        月海つくね & 穂波あみ Fan Meeting & <br class="mobile-br">月海つくね Offline Event<br>
+                        日本嘉賓專屬活動、見面會及攝影會門票
+                    </p>
+                    <a id="link-jp-guest" href="#" class="btn btn-gold">查看日本嘉賓門票 / <br class="mobile-br">View Guests Tickets</a>
+                </div>
+            </div>
+
+            <div class="ticket-col-right">
+                <div id="dynamic-extra-text" class="extra-notice"></div>
+                <h2 class="section-title">Mihoyo Only 3 Event Tickets</h2>
+
+                <div class="ig-post-wrapper">
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="btn-ig-post">🎟️ 查看門票公告貼文 / View Ticket Post</a>
+                </div>
+
+                <div class="platform-card">
+                    <div class="platform-name">
+                        Google 表格購票 / <br class="mobile-br">Purchase from Google Form
+                    </div>
+                    <div class="lang-box">
+                        早鳥優惠3月31日23:59截至！<br>
+                        Google Form 售票到5月10日23:59<br>
+                        支持以下付款方法。<br>
+                        Supports payment methods below.
+                    </div>
+                    <div class="payment-methods">
+                        <span class="method highlight">轉數快 / FPS</span>
+                        <span class="method highlight">PayMe</span>
+                        <span class="method highlight">香港支付寶 / AlipayHK</span>
+                        <span class="method">中国支付宝 / Alipay China</span>
+                    </div>
+                    <a id="link-google-form" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-outline">前往 Google Form 購票 / <br class="mobile-br">To Google Form</a>
+                </div>
+
+                <div class="platform-card">
+                    <div class="platform-name">
+                        Zaiko 購票 / <br class="mobile-br">Purchase from Zaiko
+                    </div>
+                    <div class="lang-box">
+                        早鳥優惠3月31日23:59截至！<br>
+                        Zaiko 售票到5月16日<br>
+                        接受信用卡及中國支付寶付款。<br>
+                        Support Credit/Debit Card & Alipay China.                
+                    </div>
+                    <div class="payment-methods">
+                        <span class="method highlight">Credit / Debit Card</span>
+                        <span class="method highlight">VISA / Master / JCB</span>
+                        <span class="method">中国支付宝 / Alipay China</span>
+                    </div>
+                    <a id="link-zaiko" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-pink">前往 Zaiko 購票 / To Zaiko</a>
+                </div>
+            </div>
+
         </div>
-
-        <div id="dynamic-extra-text" class="extra-notice"></div>
-        <h2 class="section-title">Mihoyo Only 3 Event Tickets</h2>
-
-        <div class="ig-post-wrapper">
-            <a href="#" target="_blank" rel="noopener noreferrer" class="btn-ig-post">🎟️ 查看門票公告貼文 / View Ticket Post</a>
-        </div>
-
-        <div class="platform-card">
-            <div class="platform-name">
-                Google 表格購票 / <br class="mobile-br">Purchase from Google Form
+        <h2 class="section-title" style="margin-top: 10px;">Special Events</h2>
+        <div class="platform-card vote-card">
+            <div class="platform-name" style="color: var(--vote-green);">
+                同人畫展票選大廳 / <br class="mobile-br">Artist Gallery Voting
             </div>
             <div class="lang-box">
-                早鳥優惠3月31日23:59截至！<br>
-                Google Form 售票到5月10日23:59<br>
-                支持以下付款方法。<br>
-                Supports payment methods below.
+                請自由於攤主區與素人區選取心儀的畫作。<br>
+                Please vote for your favorite artworks from Exhibitors and Personal artworks.
             </div>
-            <div class="payment-methods">
-                <span class="method highlight">轉數快 / FPS</span>
-                <span class="method highlight">PayMe</span>
-                <span class="method highlight">香港支付寶 / AlipayHK</span>
-                <span class="method">中国支付宝 / Alipay China</span>
-            </div>
-            <a id="link-google-form" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-outline">前往 Google Form 購票 / <br class="mobile-br">To Google Form</a>
-        </div>
-
-        <div class="platform-card">
-            <div class="platform-name">
-                Zaiko 購票 / <br class="mobile-br">Purchase from Zaiko
-            </div>
-            <div class="lang-box">
-                早鳥優惠3月31日23:59截至！<br>
-                Zaiko 售票到5月16日<br>
-                接受信用卡及中國支付寶付款。<br>
-                Support Credit/Debit Card & Alipay China.                
-            </div>
-            <div class="payment-methods">
-                <span class="method highlight">Credit / Debit Card</span>
-                <span class="method highlight">VISA / Master / JCB</span>
-                <span class="method">中国支付宝 / Alipay China</span>
-            </div>
-            <a id="link-zaiko" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-pink">前往 Zaiko 購票 / To Zaiko</a>
+            <a href="voting.html" class="btn btn-green">✦ 前往投票大廳 / Go to Voting Hub ✦</a>
         </div>
 
     </div>
 
     <footer>
-        <p>Cordially Invited by © 2026 Mihoyo Only 3 Organisation Team</p>
+        <p>Cordially Invited by 2026 Mihoyo Only 3 Organisation Team</p>
         <a href="https://www.instagram.com/mihoyo.only/" target="_blank" rel="noopener noreferrer" class="org-ig-btn">📷 Follow @mihoyo.only</a>
     </footer>
 
     <script>
+        document.onkeydown = function(e) {
+            if (e.keyCode == 123) {
+                return false;
+            }
+            if (e.ctrlKey && e.shiftKey && (e.keyCode == 'I'.charCodeAt(0) || e.keyCode == 'J'.charCodeAt(0))) {
+                return false;
+            }
+            if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
+                return false;
+            }
+            if (e.ctrlKey && e.keyCode == 'S'.charCodeAt(0)) {
+                return false;
+            }
+        };
+
         const SITE_CONFIG = {
-            backgroundImage: "https://imgur.com/vp3O2HZ.jpg",
+            backgroundImage: "https://i.imgur.com/vp3O2HZ.jpg",
             jpGuestLink: "guest.html",                                  
             googleFormLink: "https://forms.gle/iAWuNdJoMe35A8Ko9",        
             zaikoLink: "https://mihoyoonly3.zaiko.io/e/mihoyoonly3",      
