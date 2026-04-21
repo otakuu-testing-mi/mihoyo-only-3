@@ -3,413 +3,319 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mihoyo Only 3 | 門票合 Ticketing Hub</title>
-    <link href="https://fonts.googleapis.com/css2?family=Faculty+Glyphic:wght@400;700&family=Noto+Sans+JP:wght@400;700;900&family=Noto+Serif+HK:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <title>Mihoyo Only 3 | Ticketing Hub</title>
     <style>
         :root {
-            --vintage-gold: #B8860B; 
-            --rose-gold: #c08781;
-            --paper-bg: #fdfbf7; 
+            /* Apple-style minimalist color palette */
+            --bg-color: #f5f5f7; 
             --card-bg: #ffffff;
-            --text-dark: #3e2723; 
-            --text-muted: #795548;
-            --border-color: #d7ccc8;
-            --ig-color: #E1306C; 
-            --zaiko-pink: #e83e8c; 
-            --vote-green: #2e7d32; 
+            --text-primary: #1d1d1f; 
+            --text-secondary: #86868b;
+            --apple-blue: #0071e3;
+            --apple-blue-hover: #0077ed;
+            --apple-border: #d2d2d7;
+            --nav-bg: rgba(255, 255, 255, 0.72);
+            --zaiko-pink: #e83e8c;
+            --vote-green: #2e7d32;
         }
 
         *, *::before, *::after {
             box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         body {
-            margin: 0; 
-            padding: 0;
-            font-family: 'Noto Sans JP', sans-serif;
-            background-color: var(--paper-bg);
-            background-image: url('https://www.transparenttextures.com/patterns/handmade-paper.png'); 
-            color: var(--text-dark);
+            /* Using Apple's system font stack */
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
             display: flex; 
             flex-direction: column; 
             align-items: center;
             overflow-wrap: break-word;
-            /* 👑 基礎防護：禁止反白整個網頁的文字和元素 */
             -webkit-user-select: none;
             -moz-user-select: none;
             -ms-user-select: none;
             user-select: none;
-        }
-
-        /* --- 新增：導航列 Navbar --- */
-        .navbar {
-            width: 100%;
-            background-color: var(--card-bg);
-            border-bottom: 2px solid var(--vintage-gold);
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            padding: 15px 20px;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 15px rgba(184, 134, 11, 0.1);
-        }
-
-        .navbar a {
-            color: var(--text-dark);
-            text-decoration: none;
-            font-family: 'Playfair Display', 'Noto Sans JP', serif;
-            font-weight: bold;
-            font-size: 1.1rem;
-            letter-spacing: 1px;
-            transition: color 0.3s ease, transform 0.3s ease;
-        }
-
-        .navbar a:hover {
-            color: var(--vintage-gold);
-            transform: translateY(-2px);
+            -webkit-font-smoothing: antialiased;
         }
 
         .mobile-br {
             display: none;
         }
 
+        /* --- Apple-style Glassmorphism Navbar --- */
+        .navbar {
+            width: 100%;
+            background-color: var(--nav-bg);
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            padding: 14px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            letter-spacing: -0.01em;
+            transition: color 0.2s ease;
+        }
+
+        .navbar a:hover {
+            color: var(--apple-blue);
+        }
+
+        /* --- Hero Header --- */
         .header {
             width: 100%; 
-            padding: 80px 20px 60px 20px; 
+            padding: 100px 20px 80px 20px; 
             text-align: center;
-            border-bottom: 5px double var(--vintage-gold); 
             background-position: center;
             background-size: cover;
             position: relative;
         }
         
         .header h1 { 
-            font-family: 'Faculty Glyphic', 'Noto Sans JP', sans-serif; 
-            color: #fff; 
-            font-size: 3rem; 
-            margin: 0; 
-            text-shadow: 2px 2px 4px rgba(62, 39, 35, 0.8); 
-            letter-spacing: 2px; 
-            line-height: 1.3;
+            color: #ffffff; 
+            font-size: 3.5rem; 
+            font-weight: 600;
+            letter-spacing: -0.02em; 
+            margin-bottom: 8px;
         }
         
         .subtitle { 
-            font-family: 'Playfair Display', 'Noto Sans JP', serif; 
             font-size: 1.2rem; 
-            font-style: italic; 
-            color: #fff; 
-            margin-top: 10px; 
-            text-shadow: 1px 1px 3px rgba(62, 39, 35, 0.8); 
+            color: rgba(255, 255, 255, 0.85); 
+            font-weight: 400;
+            letter-spacing: -0.01em;
         }
 
         .container { 
-            max-width: 1000px; /* 增加寬度以容納左右雙欄 */
+            max-width: 1000px; 
             width: 90%; 
-            margin: 50px 0; 
+            margin: 60px 0; 
         }
 
-        /* --- 新增：左右雙欄排版 --- */
+        /* --- Flexbox Grid for Desktop --- */
         .tickets-wrapper {
             display: flex;
-            gap: 40px;
-            align-items: flex-start;
-            margin-bottom: 30px;
+            gap: 24px;
+            align-items: stretch;
+            margin-bottom: 40px;
         }
 
         .ticket-col-left, .ticket-col-right {
             flex: 1;
             display: flex;
             flex-direction: column;
+            gap: 24px;
         }
 
-        .guest-promo {
-            background: linear-gradient(135deg, #fffcf5, #f5ebd9);
-            border: 1px solid var(--vintage-gold);
-            padding: 35px 25px; 
-            border-radius: 8px; 
-            text-align: center; 
-            box-shadow: 0 10px 25px rgba(184, 134, 11, 0.15);
-            position: relative;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            height: 100%; /* 確保與右邊對齊 */
-        }
-        
-        .guest-promo:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 35px rgba(184, 134, 11, 0.25);
-        }
-        
-        .guest-promo::before {
-            content: "✦";
-            color: var(--vintage-gold);
-            font-size: 1.5rem;
-            position: absolute;
-            top: 10px; 
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .promo-title { 
-            font-family: 'Playfair Display', 'Noto Sans JP', serif; 
-            font-size: 2rem; 
-            color: var(--vintage-gold); 
-            margin-bottom: 15px; 
-            margin-top: 15px;
-            font-weight: bold; 
-        }
-
+        /* --- Typography Headings --- */
         .extra-notice {
             text-align: center;
-            color: var(--vintage-gold); 
-            font-size: 2rem; 
-            font-family: 'Noto Sans JP', sans-serif;
-            font-weight: 900;
-            margin-bottom: -5px;
-            letter-spacing: normal; 
+            color: var(--text-primary); 
+            font-size: 1.2rem; 
+            font-weight: 600;
+            margin-bottom: 10px;
+            letter-spacing: -0.015em; 
         }
         
         .section-title {
             text-align: center; 
-            margin-top: 5px; 
-            margin-bottom: 15px; 
-            font-family: 'Playfair Display', 'Noto Sans JP', serif; 
-            color: var(--text-dark);
-            font-size: 1.8rem;
+            font-size: 2.2rem;
+            font-weight: 600;
+            letter-spacing: -0.015em;
+            margin-bottom: 10px; 
+            color: var(--text-primary);
         }
 
-        .section-title::after {
-            content: "";
-            display: block;
-            width: 50px;
-            height: 2px;
-            background: var(--vintage-gold);
-            margin: 10px auto 0 auto;
-        }
-
-        .ig-post-wrapper {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .btn-ig-post {
-            display: inline-block;
-            background: linear-gradient(135deg, #fffcf5, #f5ebd9); 
-            color: var(--ig-color); 
-            border: 1px solid var(--vintage-gold); 
-            font-family: sans-serif;
-            font-weight: bold;
-            font-size: 0.95rem; 
-            padding: 12px 24px;
-            border-radius: 8px; 
-            text-decoration: none;
-            box-shadow: 0 5px 15px rgba(184, 134, 11, 0.1); 
-            transition: all 0.3s ease;
-        }
-
-        .btn-ig-post:hover {
-            transform: translateY(-3px); 
-            box-shadow: 0 8px 20px rgba(184, 134, 11, 0.2);
-        }
-
+        /* --- Apple-style Cards --- */
         .platform-card {
             background: var(--card-bg);
-            border-radius: 8px; 
-            padding: 30px; 
-            margin-bottom: 25px;
-            border: 1px solid var(--border-color); 
+            border-radius: 18px; 
+            padding: 32px; 
             display: flex; 
             flex-direction: column;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
-            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+            transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease;
+            height: 100%;
         }
 
         .platform-card:hover { 
-            transform: translateY(-3px); 
-            box-shadow: 0 8px 25px rgba(184, 134, 11, 0.1); 
-            border-color: var(--vintage-gold);
-        }
-        
-        .platform-card.vote-card:hover {
-            border-color: var(--vote-green);
+            transform: scale(1.015); 
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08); 
         }
 
         .platform-name { 
-            font-family: 'Playfair Display', 'Noto Sans JP', serif; 
-            font-size: 1.6rem; 
-            font-weight: bold; 
-            margin-bottom: 10px; 
-            color: var(--vintage-gold); 
-            border-bottom: 1px dashed var(--border-color); 
-            padding-bottom: 10px;
-        }
-
-        .payment-methods { 
-            display: flex; 
-            flex-wrap: wrap; 
-            gap: 8px; 
-            margin: 15px 0; 
-        }
-
-        .method { 
-            font-size: 0.8rem; 
-            background: #fff; 
-            padding: 6px 14px; 
-            border-radius: 4px; 
-            border: 1px solid var(--border-color); 
-            color: var(--text-muted); 
-            font-family: 'Noto Sans JP', sans-serif;
-        }
-
-        .method.highlight { 
-            border-color: var(--vintage-gold); 
-            color: var(--vintage-gold); 
-            background: #fffcf5;
+            font-size: 1.4rem; 
+            font-weight: 600; 
+            letter-spacing: -0.015em;
+            margin-bottom: 8px; 
+            color: var(--text-primary); 
         }
 
         .lang-box { 
             font-size: 0.95rem; 
-            color: var(--text-muted); 
-            line-height: 1.6; 
+            color: var(--text-secondary); 
+            line-height: 1.5; 
+            margin-bottom: 16px;
         }
 
+        /* --- Pill Tags for Payments --- */
+        .payment-methods { 
+            display: flex; 
+            flex-wrap: wrap; 
+            gap: 8px; 
+            margin-bottom: 24px; 
+        }
+
+        .method { 
+            font-size: 0.75rem; 
+            background: var(--bg-color); 
+            padding: 6px 12px; 
+            border-radius: 980px; /* Perfect pill shape */
+            color: var(--text-secondary); 
+            font-weight: 500;
+        }
+
+        .method.highlight { 
+            background: #e8f0fe; 
+            color: var(--apple-blue); 
+        }
+
+        /* --- Apple-style Buttons --- */
         .btn {
-            display: block; 
+            display: inline-block; 
             text-align: center; 
             text-decoration: none; 
-            font-weight: bold;
-            padding: 15px; 
-            border-radius: 4px; 
-            transition: all 0.3s ease; 
-            margin-top: 15px;
-            font-family: 'Playfair Display', 'Noto Sans JP', serif; 
-            font-size: 1.1rem; 
-            letter-spacing: 1px;
+            font-weight: 400;
+            padding: 14px; 
+            border-radius: 12px; 
+            transition: all 0.2s ease; 
+            margin-top: auto; /* Pushes button to bottom of card */
+            font-size: 1rem; 
+            letter-spacing: -0.01em;
         }
 
-        .btn-gold { 
-            background: var(--vintage-gold); 
+        .btn-primary { 
+            background: var(--apple-blue); 
             color: #fff; 
-            border: 1px solid var(--vintage-gold); 
         }
 
-        .btn-gold:hover { 
-            background: #9a7009; 
-            border-color: #9a7009;
+        .btn-primary:hover { 
+            background: var(--apple-blue-hover); 
         }
 
         .btn-outline { 
             background: transparent; 
-            border: 1px solid var(--text-muted); 
-            color: var(--text-dark); 
+            border: 1px solid var(--apple-border); 
+            color: var(--text-primary); 
         }
 
         .btn-outline:hover { 
-            background: var(--text-dark); 
-            color: #fff; 
-            border-color: var(--text-dark); 
+            border-color: var(--text-primary); 
         }
 
         .btn-pink {
-            background: #ffffff; 
-            color: var(--zaiko-pink); 
-            border: 1px solid var(--zaiko-pink); 
-        }
-
-        .btn-pink:hover, .btn-pink:active {
             background: var(--zaiko-pink); 
-            color: #ffffff; 
-            border-color: var(--zaiko-pink);
-        }
-        
-        .btn-green {
-            background: #ffffff; 
-            color: var(--vote-green); 
-            border: 1px solid var(--vote-green); 
+            color: #fff; 
         }
 
-        .btn-green:hover, .btn-green:active {
+        .btn-green {
             background: var(--vote-green); 
-            color: #ffffff; 
-            border-color: var(--vote-green);
+            color: #fff; 
+        }
+
+        /* --- IG Post Link --- */
+        .ig-post-wrapper {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .btn-ig-post {
+            display: inline-flex;
+            align-items: center;
+            color: var(--apple-blue); 
+            font-weight: 500;
+            font-size: 1rem; 
+            text-decoration: none;
+            transition: opacity 0.2s ease;
+        }
+
+        .btn-ig-post:hover {
+            opacity: 0.7;
+        }
+
+        .btn-ig-post::after {
+            content: "›";
+            margin-left: 6px;
+            font-size: 1.4rem;
+            line-height: 1;
+        }
+
+        /* --- Footer --- */
+        footer { 
+            margin-top: 20px; 
+            padding: 40px 20px; 
+            font-size: 0.85rem; 
+            color: var(--text-secondary); 
+            text-align: center; 
+            width: 100%;
         }
 
         .org-ig-btn {
             display: inline-block;
-            margin-top: 20px;
-            padding: 8px 24px;
-            background-color: transparent;
-            color: var(--text-muted);
-            border: 1px solid var(--text-muted);
-            border-radius: 20px;
+            margin-top: 16px;
+            color: var(--text-secondary);
             text-decoration: none;
-            font-family: sans-serif;
-            font-weight: bold;
-            font-size: 0.85rem;
-            transition: all 0.3s ease;
+            font-weight: 500;
+            transition: color 0.2s ease;
         }
 
         .org-ig-btn:hover {
-            background-color: var(--ig-color);
-            color: #fff;
-            border-color: var(--ig-color);
+            color: var(--text-primary);
         }
 
-        footer { 
-            margin-top: 40px; 
-            padding: 30px; 
-            font-size: 0.85rem; 
-            color: var(--text-muted); 
-            text-align: center; 
-            border-top: 1px solid var(--border-color); 
-            width: 80%;
-        }
-
+        /* --- Responsive Mobile Layout --- */
         @media (max-width: 768px) {
             .navbar {
                 gap: 20px;
                 padding: 12px 15px;
             }
-            .navbar a {
-                font-size: 1rem;
-            }
             .tickets-wrapper {
-                flex-direction: column; /* 手機版自動變成上下排列 */
-                gap: 20px;
+                flex-direction: column; 
+                gap: 24px;
             }
             .mobile-br {
                 display: block;
             }
             .header {
-                padding: 60px 15px 40px 15px;
+                padding: 70px 15px 50px 15px;
             }
             .header h1 {
-                font-size: 1.8rem;
-                letter-spacing: 1px;
-            }
-            .promo-title {
-                font-size: 1.6rem;
-            }
-            .extra-notice {
-                font-size: 1.6rem;
+                font-size: 2.2rem;
             }
             .section-title {
-                font-size: 1.4rem;
+                font-size: 1.8rem;
             }
             .platform-card {
-                padding: 20px 15px;
+                padding: 24px;
             }
             .platform-name {
-                font-size: 1.3rem;
+                font-size: 1.2rem;
             }
             .btn {
-                font-size: 1rem;
-                padding: 12px;
-            }
-            .btn-ig-post {
-                font-size: 0.85rem;
-                padding: 10px 18px;
+                font-size: 0.95rem;
+                padding: 14px;
             }
         }
     </style>
@@ -432,31 +338,33 @@
         <div class="tickets-wrapper">
             
             <div class="ticket-col-left">
-                <div class="guest-promo">
-                    <div class="promo-title">日本嘉賓見面會<br>Special Guests <br class="mobile-br">Tea Party</div>
-                    <p class="lang-box">
-                        月海つくね & 穂波あみ Fan Meeting & <br class="mobile-br">月海つくね Offline Event<br>
+                <h2 class="section-title">Special Guests</h2>
+                <div class="ig-post-wrapper" style="visibility: hidden; margin-bottom: 0;">
+                    <a href="#" class="btn-ig-post">Spacer</a>
+                </div>
+                <div class="platform-card">
+                    <div class="platform-name">日本嘉賓見面會<br>Tea Party</div>
+                    <div class="lang-box">
+                        月海つくね & 穂波あみ Fan Meeting & <br class="mobile-br">月海つくね Offline Event<br><br>
                         日本嘉賓專屬活動、見面會及攝影會門票
-                    </p>
-                    <a id="link-jp-guest" href="#" class="btn btn-gold">查看日本嘉賓門票 / <br class="mobile-br">View Guests Tickets</a>
+                    </div>
+                    <a id="link-jp-guest" href="#" class="btn btn-primary">查看日本嘉賓門票 / View Tickets</a>
                 </div>
             </div>
 
             <div class="ticket-col-right">
                 <div id="dynamic-extra-text" class="extra-notice"></div>
-                <h2 class="section-title">Mihoyo Only 3 Event Tickets</h2>
+                <h2 class="section-title">Event Tickets</h2>
 
                 <div class="ig-post-wrapper">
-                    <a href="#" target="_blank" rel="noopener noreferrer" class="btn-ig-post">🎟️ 查看門票公告貼文 / View Ticket Post</a>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="btn-ig-post">查看門票公告貼文 / View Ticket Post</a>
                 </div>
 
                 <div class="platform-card">
-                    <div class="platform-name">
-                        Google 表格購票 / <br class="mobile-br">Purchase from Google Form
-                    </div>
+                    <div class="platform-name">Google 表格購票 / Google Form</div>
                     <div class="lang-box">
                         早鳥優惠3月31日23:59截至！<br>
-                        Google Form 售票到5月10日23:59<br>
+                        Google Form 售票到5月10日23:59<br><br>
                         支持以下付款方法。<br>
                         Supports payment methods below.
                     </div>
@@ -466,16 +374,14 @@
                         <span class="method highlight">香港支付寶 / AlipayHK</span>
                         <span class="method">中国支付宝 / Alipay China</span>
                     </div>
-                    <a id="link-google-form" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-outline">前往 Google Form 購票 / <br class="mobile-br">To Google Form</a>
+                    <a id="link-google-form" href="#" target="_blank" rel="noopener noreferrer" class="btn btn-outline">前往 Google Form 購票</a>
                 </div>
 
                 <div class="platform-card">
-                    <div class="platform-name">
-                        Zaiko 購票 / <br class="mobile-br">Purchase from Zaiko
-                    </div>
+                    <div class="platform-name">Zaiko 購票 / Purchase from Zaiko</div>
                     <div class="lang-box">
                         早鳥優惠3月31日23:59截至！<br>
-                        Zaiko 售票到5月16日<br>
+                        Zaiko 售票到5月16日<br><br>
                         接受信用卡及中國支付寶付款。<br>
                         Support Credit/Debit Card & Alipay China.                
                     </div>
@@ -489,39 +395,31 @@
             </div>
 
         </div>
-        <h2 class="section-title" style="margin-top: 10px;">Special Events</h2>
-        <div class="platform-card vote-card">
-            <div class="platform-name" style="color: var(--vote-green);">
-                同人畫展票選大廳 / <br class="mobile-br">Artist Gallery Voting
-            </div>
+
+        <h2 class="section-title" style="margin-top: 20px;">Special Events</h2>
+        <div class="platform-card" style="align-items: center; text-align: center;">
+            <div class="platform-name">同人畫展票選大廳 / Artist Gallery Voting</div>
             <div class="lang-box">
                 請自由於攤主區與素人區選取心儀的畫作。<br>
                 Please vote for your favorite artworks from Exhibitors and Personal artworks.
             </div>
-            <a href="voting.html" class="btn btn-green">✦ 前往投票大廳 / Go to Voting Hub ✦</a>
+            <a href="voting.html" class="btn btn-green" style="padding-left: 30px; padding-right: 30px;">前往投票大廳 / Go to Voting Hub</a>
         </div>
 
     </div>
 
     <footer>
         <p>Cordially Invited by 2026 Mihoyo Only 3 Organisation Team</p>
-        <a href="https://www.instagram.com/mihoyo.only/" target="_blank" rel="noopener noreferrer" class="org-ig-btn">📷 Follow @mihoyo.only</a>
+        <a href="https://www.instagram.com/mihoyo.only/" target="_blank" rel="noopener noreferrer" class="org-ig-btn">Follow @mihoyo.only on Instagram ↗</a>
     </footer>
 
     <script>
+        // Security block script remains untouched
         document.onkeydown = function(e) {
-            if (e.keyCode == 123) {
-                return false;
-            }
-            if (e.ctrlKey && e.shiftKey && (e.keyCode == 'I'.charCodeAt(0) || e.keyCode == 'J'.charCodeAt(0))) {
-                return false;
-            }
-            if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
-                return false;
-            }
-            if (e.ctrlKey && e.keyCode == 'S'.charCodeAt(0)) {
-                return false;
-            }
+            if (e.keyCode == 123) { return false; }
+            if (e.ctrlKey && e.shiftKey && (e.keyCode == 'I'.charCodeAt(0) || e.keyCode == 'J'.charCodeAt(0))) { return false; }
+            if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) { return false; }
+            if (e.ctrlKey && e.keyCode == 'S'.charCodeAt(0)) { return false; }
         };
 
         const SITE_CONFIG = {
@@ -532,7 +430,8 @@
             noticeText: "米哈遊 Only 3 入場門票" 
         };
         
-        document.getElementById('dynamic-header').style.backgroundImage = `linear-gradient(rgba(45, 30, 20, 0.6), rgba(45, 30, 20, 0.7)), url('${SITE_CONFIG.backgroundImage}')`;
+        // Added a stronger dark overlay to the background image so white text stays readable (Apple TV+ style)
+        document.getElementById('dynamic-header').style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('${SITE_CONFIG.backgroundImage}')`;
         document.getElementById('link-jp-guest').href = SITE_CONFIG.jpGuestLink;
         document.getElementById('link-google-form').href = SITE_CONFIG.googleFormLink;
         document.getElementById('link-zaiko').href = SITE_CONFIG.zaikoLink;
