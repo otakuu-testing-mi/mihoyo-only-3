@@ -79,7 +79,6 @@
         /* --- 🌟 Hero Banner --- */
         .hero {
             width: 100%; 
-            /* 👇 這裡加大了上下留白 (padding)，讓 Banner 變得更高 */
             padding: 180px 20px 140px 20px; 
             text-align: center;
             border-bottom: 5px double var(--vintage-gold); 
@@ -350,11 +349,14 @@
 
         @media (max-width: 768px) {
             .navbar {
-                gap: 20px;
-                padding: 12px 15px;
+                gap: 12px;           /* 縮小間距 */
+                padding: 10px;       /* 縮小上下左右的內邊距 */
+                flex-wrap: wrap;     /* 允許在特別窄的手機螢幕上自動換行 */
             }
             .navbar a {
-                font-size: 1rem;
+                font-size: 0.8rem;   /* 大幅縮小手機版選單字體 */
+                letter-spacing: 0.5px;
+                text-align: center;
             }
             .mobile-br {
                 display: block;
@@ -364,7 +366,6 @@
                 gap: 20px;
             }
             .hero {
-                /* 👇 手機版也同步加高 */
                 padding: 100px 15px 80px 15px;
             }
             .hero h1 {
